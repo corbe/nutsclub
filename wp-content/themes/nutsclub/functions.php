@@ -176,3 +176,43 @@ function nutsclub_customizer_settings($wp_customize) {
     ]);
 }
 add_action('customize_register', 'nutsclub_customizer_settings');
+
+// ===== Language URL Prefix Routing =====
+function nutsclub_lang_rewrite($query_vars) {
+    $uri  = $_SERVER['REQUEST_URI'] ?? '/';
+    $path = parse_url($uri, PHP_URL_PATH);
+    $parts = explode('/', trim($path, '/'));
+    if (in_array($parts[0] ?? '', ['pt', 'en', 'es'])) {
+        $lang = $parts[0];
+        setcookie('lp_lang', $lang, time() + 365*86400, '/');
+        $_COOKIE['lp_lang'] = $lang;
+        // Rewrite the request without the language prefix
+        $new_path = '/' . implode('/', array_slice($parts, 1));
+        $_SERVER['REQUEST_URI'] = $new_path ?: '/';
+    }
+    return $query_vars;
+}
+add_filter('request', 'nutsclub_lang_rewrite', 0);
+
+// Also redirect /pt /en /es root to home
+function nutsclub_lang_redirect() {
+    if (is_404()) {
+        $path = trim(parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH), '/');
+        if (in_array($path, ['pt', 'en', 'es'])) {
+            wp_redirect(home_url('/'), 301);
+            exit;
+        }
+    }
+}
+add_action('template_redirect', 'nutsclub_lang_redirect');
+
+// Prevent canonical redirect for language-prefixed URLs
+function nutsclub_disable_canonical_redirect($redirect_url, $requested_url) {
+    $path = parse_url($requested_url, PHP_URL_PATH);
+    $parts = explode('/', trim($path, '/'));
+    if (in_array($parts[0] ?? '', ['pt', 'en', 'es'])) {
+        return false;
+    }
+    return $redirect_url;
+}
+add_filter('redirect_canonical', 'nutsclub_disable_canonical_redirect', 10, 2);

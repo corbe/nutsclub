@@ -598,7 +598,7 @@ a {
 
 /* ===== FOOTER ===== */
 .lp-footer {
-  background: var(--lp-surface);
+  background: rgba(35, 35, 35, 0.95);
   border-top: 1px solid var(--lp-border);
   padding: 48px 0 96px;
 }
@@ -867,137 +867,314 @@ a {
 
 /* ===== TORNEIOS PAGE ===== */
 
-/* --- Circular Carousel --- */
-.trn-carousel {
+/* --- New Premium Banner --- */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&display=swap');
+
+.trn-hero-new {
   position: relative;
   width: 100%;
-  overflow: hidden;
-}
-
-.trn-carousel__track {
-  display: flex;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform;
-  gap: 0;
-}
-
-.trn-carousel__slide {
-  flex: 0 0 100%;
-  min-height: 65vh;
+  min-height: 75vh;
+  background: #1B1B1B;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
-  border-radius: 120px;
-  margin: 0 20px;
   overflow: hidden;
+  padding: 80px 40px;
 }
 
-.trn-carousel__overlay {
+.trn-hero-new__bg-text {
   position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.7) 100%);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: clamp(120px, 20vw, 320px);
+  color: rgba(255, 255, 255, 0.04);
+  white-space: nowrap;
+  user-select: none;
   pointer-events: none;
-}
-
-.trn-carousel__content {
-  position: relative;
-  z-index: 1;
+  letter-spacing: -0.03em;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
   text-align: center;
-  padding: 60px 40px;
-  max-width: 640px;
+  line-height: 1;
 }
 
-.trn-carousel__content .trn-carousel__badge {
-  display: inline-block;
-  padding: 8px 20px;
-  font-size: 12px;
+.trn-hero-new__carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  position: relative;
+  z-index: 2;
+  perspective: 1200px;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.trn-hero-new__card {
+  flex-shrink: 0;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+  position: relative;
+}
+
+.trn-hero-new__card[data-index="0"],
+.trn-hero-new__card[data-index="2"] {
+  transform: scale(0.82) !important;
+  opacity: 0.5 !important;
+  z-index: 1;
+}
+
+.trn-hero-new__card[data-index="1"] {
+  z-index: 3;
+  margin: 0 -40px;
+}
+
+@media (min-width: 900px) {
+  .trn-hero-new__card[data-index="0"] { margin-right: -80px; }
+  .trn-hero-new__card[data-index="2"] { margin-left: -80px; }
+}
+
+.trn-hero-new__card-inner {
+  width: 360px;
+  padding: 40px 32px 0;
+  background: linear-gradient(180deg, #222222 0%, #1B1B1B 100%);
+  border-radius: 70px;
+  border: 1px solid #444444;
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 420px;
+}
+
+.trn-hero-new__card[data-index="1"] .trn-hero-new__card-inner {
+  width: 480px;
+  min-height: 500px;
+  padding: 48px 40px 0;
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.trn-hero-new__card-title {
+  font-family: 'Montserrat', sans-serif;
   font-weight: 700;
+  font-size: 14px;
+  color: #ffffff;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: var(--lp-cta);
-  border: 1.5px solid rgba(0, 200, 83, 0.35);
-  border-radius: 100px;
-  margin-bottom: 24px;
-  background: rgba(0, 200, 83, 0.06);
+  text-align: center;
+  margin-bottom: 12px;
+  opacity: 0.7;
 }
 
-
-
-.trn-carousel__title {
-  font-size: clamp(32px, 6vw, 56px);
+.trn-hero-new__card-prize {
+  font-family: 'Montserrat', sans-serif;
   font-weight: 900;
-  letter-spacing: -1px;
-  margin-bottom: 16px;
-  line-height: 1.1;
+  font-size: clamp(64px, 8vw, 100px);
+  color: #F5A63B;
+  line-height: 1;
+  text-align: center;
+  letter-spacing: -0.03em;
+  margin-top: 8px;
 }
 
-.trn-carousel__stats {
+.trn-hero-new__card[data-index="1"] .trn-hero-new__card-prize {
+  font-size: clamp(80px, 10vw, 130px);
+}
+
+.trn-hero-new__card-game {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: clamp(20px, 2.5vw, 32px);
+  color: #ffffff;
+  text-align: center;
+  letter-spacing: 4px;
+  margin-top: 4px;
+  margin-bottom: auto;
+  opacity: 0.9;
+}
+
+.trn-hero-new__card[data-index="1"] .trn-hero-new__card-game {
+  font-size: clamp(24px, 3vw, 38px);
+}
+
+.trn-hero-new__card-info {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  width: calc(100% + 64px);
+  margin-top: 24px;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 0 0 70px 70px;
+  margin-left: -32px;
+  margin-bottom: 0;
+  padding: 16px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.trn-hero-new__card[data-index="1"] .trn-hero-new__card-info {
+  width: calc(100% + 80px);
+  margin-left: -40px;
+  border-radius: 0 0 70px 70px;
+}
+
+.trn-hero-new__info-col {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 8px;
-  font-size: 14px;
-  color: var(--lp-text-muted);
-  flex-wrap: wrap;
+  gap: 4px;
+  padding: 4px 8px;
 }
 
-.trn-carousel__stats strong {
-  color: var(--lp-gold);
+.trn-hero-new__info-label {
+  font-family: 'Montserrat', sans-serif;
   font-weight: 700;
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
 }
 
-.trn-carousel__sep {
-  color: rgba(255, 255, 255, 0.15);
+.trn-hero-new__info-value {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 14px;
+  color: #ffffff;
 }
 
-.trn-carousel__nav {
+.trn-hero-new__dots {
   position: absolute;
-  bottom: 32px;
+  bottom: 24px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   gap: 10px;
-  z-index: 2;
+  z-index: 5;
 }
 
-.trn-carousel__dot {
-  width: 10px;
-  height: 10px;
+.trn-hero-new__dot {
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  border: 1.5px solid rgba(255, 255, 255, 0.4);
-  background: transparent;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
   cursor: pointer;
-  transition: background 0.3s, border-color 0.3s, transform 0.2s;
+  transition: background 0.3s, transform 0.2s;
   padding: 0;
 }
 
-.trn-carousel__dot:hover {
-  border-color: var(--lp-gold);
+.trn-hero-new__dot:hover {
+  background: rgba(255, 255, 255, 0.4);
   transform: scale(1.2);
 }
 
-.trn-carousel__dot--active {
-  background: var(--lp-gold);
-  border-color: var(--lp-gold);
+.trn-hero-new__dot--active {
+  background: #ffffff;
 }
 
-@media (max-width: 768px) {
-  .trn-carousel__slide {
-    min-height: 50vh;
+@media (max-width: 900px) {
+  .trn-hero-new {
+    min-height: 60vh;
+    padding: 60px 16px;
   }
 
-  .trn-carousel__title {
-    font-size: 24px;
+  .trn-hero-new__card-inner {
+    width: 280px;
+    padding: 28px 20px 0;
+    border-radius: 40px;
+    min-height: 320px;
   }
 
-  .trn-carousel__stats {
-    font-size: 12px;
+  .trn-hero-new__card[data-index="1"] .trn-hero-new__card-inner {
+    width: 320px;
+    min-height: 360px;
+    padding: 32px 24px 0;
   }
 
-  .trn-carousel__nav {
-    bottom: 20px;
+  .trn-hero-new__card[data-index="0"] { margin-right: -40px; }
+  .trn-hero-new__card[data-index="2"] { margin-left: -40px; }
+
+  .trn-hero-new__card-prize {
+    font-size: 52px;
   }
+
+  .trn-hero-new__card[data-index="1"] .trn-hero-new__card-prize {
+    font-size: 64px;
+  }
+
+  .trn-hero-new__card-game {
+    font-size: 18px;
+  }
+
+  .trn-hero-new__card-info {
+    width: calc(100% + 40px);
+    margin-left: -20px;
+    border-radius: 0 0 40px 40px;
+  }
+
+  .trn-hero-new__card[data-index="1"] .trn-hero-new__card-info {
+    width: calc(100% + 48px);
+    margin-left: -24px;
+    border-radius: 0 0 40px 40px;
+  }
+
+  .trn-hero-new__info-label {
+    font-size: 7px;
+  }
+
+  .trn-hero-new__info-value {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .trn-hero-new__card-inner {
+    width: 200px;
+    padding: 20px 14px 0;
+    border-radius: 28px;
+    min-height: 240px;
+  }
+
+  .trn-hero-new__card[data-index="1"] .trn-hero-new__card-inner {
+    width: 240px;
+    min-height: 280px;
+    padding: 24px 16px 0;
+  }
+
+  .trn-hero-new__card-prize {
+    font-size: 36px;
+  }
+
+  .trn-hero-new__card-game {
+    font-size: 14px;
+    letter-spacing: 2px;
+  }
+
+  .trn-hero-new__card-info {
+    width: calc(100% + 28px);
+    margin-left: -14px;
+    border-radius: 0 0 28px 28px;
+    padding: 10px 0;
+  }
+
+  .trn-hero-new__card[data-index="1"] .trn-hero-new__card-info {
+    width: calc(100% + 32px);
+    margin-left: -16px;
+  }
+
+  .trn-hero-new__card[data-index="0"] { margin-right: -24px; }
+  .trn-hero-new__card[data-index="2"] { margin-left: -24px; }
+
+  .trn-hero-new__info-label { font-size: 6px; }
+  .trn-hero-new__info-value { font-size: 9px; }
 }
 
 .trn-header {

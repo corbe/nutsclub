@@ -1,11 +1,46 @@
 <?php
 // Translation system
-global $t, $lang;
 $langs = ['pt', 'en', 'es'];
-$lang  = isset($_COOKIE['lp_lang']) && in_array($_COOKIE['lp_lang'], $langs) ? $_COOKIE['lp_lang'] : 'pt';
 
-$t = [];
+// Detect language from URL prefix
+$uri   = $_SERVER['REQUEST_URI'] ?? '/';
+$parts = explode('/', trim(parse_url($uri, PHP_URL_PATH), '/'));
+$url_lang = in_array($parts[0] ?? '', $langs) ? $parts[0] : null;
 
+// Detect language from cookie
+$cookie_lang = isset($_COOKIE['lp_lang']) && in_array($_COOKIE['lp_lang'], $langs) ? $_COOKIE['lp_lang'] : null;
+
+// Detect language from browser
+$browser_lang = 'pt';
+if (!empty($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
+    $accept = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
+    // Check for English
+    if (preg_match('/\ben\b/i', $accept) && !preg_match('/\bpt\b/i', $accept)) {
+        $browser_lang = 'en';
+    }
+    // Check for Spanish
+    if (preg_match('/\bes\b/i', $accept) && !preg_match('/\bpt\b/i', $accept)) {
+        $browser_lang = 'es';
+    }
+}
+
+// Priority: URL > cookie > browser > default (pt)
+$lang = $url_lang ?? $cookie_lang ?? $browser_lang;
+
+// Save to cookie
+setcookie('lp_lang', $lang, time() + 365*86400, '/');
+
+// Build the main translation array into GLOBALS
+$GLOBALS['nuts_t'] = [];
+
+function _tr($key) {
+    global $lang;
+    $t = $GLOBALS['nuts_t'] ?? [];
+    return $t[$lang][$key] ?? $t['pt'][$key] ?? $key;
+}
+
+// Shared translations (header, footer, common components)
+$t = &$GLOBALS['nuts_t'];
 $t['pt']['menu_torneios']   = 'Torneios';
 $t['en']['menu_torneios']   = 'Tournaments';
 $t['es']['menu_torneios']   = 'Torneos';
@@ -38,13 +73,27 @@ $t['pt']['footer_warn']     = 'Jogue com responsabilidade. Se o jogo deixar de s
 $t['en']['footer_warn']     = 'Play responsibly. If gambling stops being fun, seek help.';
 $t['es']['footer_warn']     = 'Juega con responsabilidad. Si el juego deja de ser diversión, busca ayuda.';
 
-function __t($key) {
-    global $t, $lang;
-    return $t[$lang][$key] ?? $t['pt'][$key] ?? $key;
+$t['pt']['insta_link']      = 'Siga no Instagram';
+$t['en']['insta_link']      = 'Follow on Instagram';
+$t['es']['insta_link']      = 'Síguenos en Instagram';
+unset($t);
+
+// Backward compat
+if (!function_exists('__t')) {
+    function __t($key) { return _tr($key); }
 }
 
-if (isset($_GET['lang']) && in_array($_GET['lang'], ['pt','en','es'])) {
-    $lang = $_GET['lang'];
-    setcookie('lp_lang', $lang, time() + 365*86400, '/');
-    $_COOKIE['lp_lang'] = $lang;
+// Helper: get current page URL with language prefix
+function lang_url($target_lang) {
+    global $lang;
+    $uri  = $_SERVER['REQUEST_URI'] ?? '/';
+    $path = parse_url($uri, PHP_URL_PATH);
+    $qs   = parse_url($uri, PHP_URL_QUERY);
+    $parts = explode('/', trim($path, '/'));
+    if (in_array($parts[0] ?? '', ['pt','en','es'])) {
+        array_shift($parts);
+    }
+    $new_path = '/' . $target_lang . '/' . implode('/', $parts);
+    $new_path = rtrim($new_path, '/') . '/';
+    return $new_path . ($qs ? '?' . $qs : '');
 }

@@ -4,6 +4,7 @@
  */
 
 get_template_part('template-parts/translation');
+$t = &$GLOBALS['nuts_t'];
 $t['pt']['bonus']         = '100% Bonus Instant';
 $t['en']['bonus']         = '100% Instant Bonus';
 $t['es']['bonus']         = '100% Bono Instantáneo';

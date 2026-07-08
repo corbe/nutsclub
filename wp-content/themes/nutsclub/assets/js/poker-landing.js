@@ -104,21 +104,31 @@
   }
 
   // === CAROUSEL (torneios) ===
-  const track = document.querySelector('.trn-carousel__track');
-  const dots = document.querySelectorAll('.trn-carousel__dot');
+  const cards = document.querySelectorAll('.trn-hero-new__card');
+  const dots = document.querySelectorAll('.trn-hero-new__dot');
 
-  if (track && dots.length) {
-    let current = 0;
-    const total = dots.length;
+  if (cards.length && dots.length) {
+    let current = 1; // center card
+    const total = cards.length;
     let interval;
 
     function goToSlide(index) {
       if (index < 0) index = total - 1;
       if (index >= total) index = 0;
       current = index;
-      track.style.transform = 'translateX(-' + (current * 100) + '%)';
+      cards.forEach((card, i) => {
+        const isCenter = i === current;
+        card.style.transform = isCenter ? 'scale(1)' : 'scale(0.82)';
+        card.style.opacity = isCenter ? '1' : '0.5';
+        card.style.zIndex = isCenter ? '3' : '1';
+        if (isCenter) {
+          card.style.margin = '0 -40px';
+        } else {
+          card.style.margin = '';
+        }
+      });
       dots.forEach((d, i) => {
-        d.classList.toggle('trn-carousel__dot--active', i === current);
+        d.classList.toggle('trn-hero-new__dot--active', i === current);
       });
     }
 
@@ -129,19 +139,28 @@
       });
     });
 
+    cards.forEach((card) => {
+      card.addEventListener('click', function () {
+        const idx = parseInt(this.getAttribute('data-index'));
+        if (idx !== current) {
+          goToSlide(idx);
+          resetInterval();
+        }
+      });
+    });
+
     function resetInterval() {
       clearInterval(interval);
       interval = setInterval(() => goToSlide(current + 1), 5000);
     }
 
-    goToSlide(0);
+    goToSlide(1);
     resetInterval();
 
-    // Pause on hover
-    const carousel = document.querySelector('.trn-carousel');
-    if (carousel) {
-      carousel.addEventListener('mouseenter', () => clearInterval(interval));
-      carousel.addEventListener('mouseleave', resetInterval);
+    const hero = document.querySelector('.trn-hero-new');
+    if (hero) {
+      hero.addEventListener('mouseenter', () => clearInterval(interval));
+      hero.addEventListener('mouseleave', resetInterval);
     }
   }
 })();
