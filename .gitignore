@@ -6,6 +6,7 @@ Thumbs.db
 wp-content/cache/
 wp-content/upgrade/
 wp-content/debug.log
+wp-content/plugins/
 
 # Logs
 *.log
