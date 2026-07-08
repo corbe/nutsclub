@@ -181,6 +181,7 @@ get_header('blank');
 
   <section class="lp-section" id="benefits">
     <div class="lp-container">
+      <span class="section__tag reveal">Vantagens</span>
       <h2 class="lp-section__title reveal"><?php echo __t('benefits_title'); ?></h2>
       <div class="lp-benefits">
         <article class="lp-card reveal">
@@ -236,6 +237,7 @@ get_header('blank');
 
   <section class="lp-section" id="trust">
     <div class="lp-container">
+      <span class="section__tag reveal">Credibilidade</span>
       <h2 class="lp-section__title reveal"><?php echo __t('trust_title'); ?></h2>
       <div class="lp-trust">
         <div class="lp-trust__rating reveal">
