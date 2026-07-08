@@ -181,8 +181,8 @@ get_header('blank');
 
   <section class="lp-section" id="benefits">
     <div class="lp-container">
-      <span class="section__tag reveal">Vantagens</span>
-      <h2 class="lp-section__title reveal"><?php echo __t('benefits_title'); ?></h2>
+      <span class="section__tag reveal" style="display:block;text-align:center;color:#F5C842;font-size:13px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px">Vantagens</span>
+      <h2 class="lp-section__title reveal" style="text-align:center;color:#F5C842"><?php echo __t('benefits_title'); ?></h2>
       <div class="lp-benefits">
         <article class="lp-card reveal">
           <div class="lp-card__icon">&#9824;</div>
@@ -237,8 +237,8 @@ get_header('blank');
 
   <section class="lp-section" id="trust">
     <div class="lp-container">
-      <span class="section__tag reveal">Credibilidade</span>
-      <h2 class="lp-section__title reveal"><?php echo __t('trust_title'); ?></h2>
+      <span class="section__tag reveal" style="display:block;text-align:center;color:#F5C842;font-size:13px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px">Credibilidade</span>
+      <h2 class="lp-section__title reveal" style="text-align:center;color:#F5C842"><?php echo __t('trust_title'); ?></h2>
       <div class="lp-trust">
         <div class="lp-trust__rating reveal">
           <div class="lp-trust__stars">
