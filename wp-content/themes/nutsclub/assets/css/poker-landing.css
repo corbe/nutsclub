@@ -1136,7 +1136,7 @@ a {
 .trn-hero__dots {
   display: flex;
   gap: 14px;
-  margin: 40px auto 0;
+  margin: 20px auto 0;
   z-index: 5;
   align-items: center;
   justify-content: center;
