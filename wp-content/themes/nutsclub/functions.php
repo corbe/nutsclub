@@ -1,6 +1,6 @@
 <?php
 
-define('NUTSCLUB_VERSION', '2.0.0');
+define('NUTSCLUB_VERSION', '2.0.1');
 
 function nutsclub_setup() {
     add_theme_support('title-tag');
