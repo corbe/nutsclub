@@ -10,7 +10,10 @@ $poker_url   = get_field('poker_url') ?: '#';
 $highlights = [
   ['title'=>'#AS OmaX HR','prize'=>'80K','game'=>'PLO5','time'=>'08:00 PM','buyin'=>'R$ 100','stack'=>'25.000','late'=>'30 min','blinds'=>'200/400'],
   ['title'=>'#MS NLH Turbo','prize'=>'200K','game'=>'NLH','time'=>'09:00 PM','buyin'=>'R$ 250','stack'=>'50.000','late'=>'45 min','blinds'=>'500/1K'],
-  ['title'=>'#PKO Bounty','prize'=>'120K','game'=>'PKO','time'=>'10:00 PM','buyin'=>'R$ 80','stack'=>'15.000','late'=>'20 min','blinds'=>'150/300']
+  ['title'=>'#PKO Bounty','prize'=>'120K','game'=>'PKO','time'=>'10:00 PM','buyin'=>'R$ 80','stack'=>'15.000','late'=>'20 min','blinds'=>'150/300'],
+  ['title'=>'#Sun Milionario','prize'=>'500K','game'=>'NLH','time'=>'11:00 PM','buyin'=>'R$ 500','stack'=>'100.000','late'=>'60 min','blinds'=>'1K/2K'],
+  ['title'=>'#Omaha Hi-Lo','prize'=>'60K','game'=>'PLO','time'=>'12:00 AM','buyin'=>'R$ 60','stack'=>'12.000','late'=>'15 min','blinds'=>'120/240'],
+  ['title'=>'#Turbo KO','prize'=>'40K','game'=>'PKO','time'=>'01:00 AM','buyin'=>'R$ 40','stack'=>'8.000','late'=>'10 min','blinds'=>'80/160']
 ];
 
 $all_tournaments = [

@@ -982,12 +982,8 @@ a {
   margin-top: 20px;
 }
 
-.trn-hero__card--side:first-child {
-  margin-right: -120px;
-}
-
-.trn-hero__card--side:last-child {
-  margin-left: -120px;
+.trn-hero__card--side {
+  margin: 20px -60px 0;
 }
 
 .trn-hero__card--center {
