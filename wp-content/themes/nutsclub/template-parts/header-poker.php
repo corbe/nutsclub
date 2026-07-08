@@ -1,10 +1,10 @@
 <header class="lp-header">
   <div class="lp-header__inner">
-    <a href="<?php echo esc_url(home_url('/')); ?>" class="lp-header__logo" aria-label="Nuts Poker">
+    <a href="<?php echo esc_url(lang_home_url('/')); ?>" class="lp-header__logo" aria-label="Nuts Poker">
       <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/img/logo.png?v=' . filemtime(get_template_directory() . '/assets/img/logo.png')); ?>" alt="Nuts Poker" style="height: 40px; width: auto;">
     </a>
     <nav class="lp-header__nav">
-      <a href="<?php echo esc_url(home_url('/torneios/')); ?>" class="lp-header__nav-link <?php echo !empty($is_torneios) ? 'lp-header__nav-link--active' : ''; ?>"><?php echo __t('menu_torneios'); ?></a>
+      <a href="<?php echo esc_url(lang_home_url('/torneios/')); ?>" class="lp-header__nav-link <?php echo !empty($is_torneios) ? 'lp-header__nav-link--active' : ''; ?>"><?php echo __t('menu_torneios'); ?></a>
     </nav>
     <div class="lp-header__right">
       <div class="lp-lang">

@@ -83,6 +83,16 @@ if (!function_exists('__t')) {
     function __t($key) { return _tr($key); }
 }
 
+// Helper: returns URL with current language prefix
+function lang_home_url($path = '/') {
+    global $lang;
+    if ($lang === 'pt') {
+        return home_url($path);
+    }
+    $path = ltrim($path, '/');
+    return home_url('/' . $lang . '/' . $path);
+}
+
 // Helper: get current page URL with language prefix
 function lang_url($target_lang) {
     global $lang;
