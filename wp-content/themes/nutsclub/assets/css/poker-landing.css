@@ -148,6 +148,38 @@ a {
   color: var(--lp-text);
 }
 
+.lp-header__right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.lp-lang {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.lp-lang__flag {
+  display: flex;
+  align-items: center;
+  opacity: 0.5;
+  transition: opacity 0.2s, transform 0.2s;
+  border-radius: 2px;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.lp-lang__flag:hover {
+  opacity: 0.8;
+  transform: scale(1.1);
+}
+
+.lp-lang__flag--active {
+  opacity: 1;
+  box-shadow: 0 0 0 1.5px var(--lp-gold);
+}
+
 .lp-header__login {
   font-size: 13px;
   font-weight: 500;
