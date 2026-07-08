@@ -170,6 +170,27 @@ a {
   color: var(--lp-text);
 }
 
+.lp-header__nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.lp-header__nav-link {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--lp-text-muted);
+  letter-spacing: 0.5px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: color 0.2s, background 0.2s;
+}
+
+.lp-header__nav-link:hover {
+  color: var(--lp-text);
+  background: rgba(255, 255, 255, 0.05);
+}
+
 .lp-header__right {
   display: flex;
   align-items: center;
@@ -841,6 +862,90 @@ a {
 }
 
 /* ===== TORNEIOS PAGE ===== */
+.trn-hero {
+  min-height: 50vh !important;
+}
+
+@media (max-width: 768px) {
+  .trn-hero {
+    min-height: 40vh !important;
+  }
+}
+
+.trn-cards-section {
+  padding-top: 56px;
+}
+
+.trn-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.trn-card {
+  background: var(--lp-card-bg);
+  border: 1px solid var(--lp-border);
+  border-radius: var(--lp-radius);
+  overflow: hidden;
+  transition: border-color 0.3s, transform 0.3s;
+}
+
+.trn-card:hover {
+  border-color: rgba(212, 175, 55, 0.3);
+  transform: translateY(-4px);
+}
+
+.trn-card__img {
+  position: relative;
+  aspect-ratio: 16/9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.trn-card__suit {
+  font-size: 48px;
+  opacity: 0.15;
+  color: var(--lp-gold);
+}
+
+.trn-card__gtd-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--lp-gold);
+  background: rgba(212, 175, 55, 0.12);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 100px;
+}
+
+.trn-card__body {
+  padding: 16px 20px 20px;
+}
+
+.trn-card__title {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.trn-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  font-size: 12px;
+  color: var(--lp-text-muted);
+}
+
+.trn-card__meta strong {
+  color: var(--lp-text);
+}
+
 .trn-header {
   position: relative;
   min-height: 40vh;

@@ -90,14 +90,36 @@ $tournaments = [
 ?>
 
 <main class="trn">
-  <header class="trn-header">
-    <div class="trn-header__bg"></div>
-    <div class="trn-header__overlay"></div>
-    <div class="trn-header__content">
-      <h1 class="trn-header__title">Torneios</h1>
-      <p class="trn-header__sub">Grade do dia &mdash; <strong><?php echo date('d/m/Y'); ?></strong></p>
+  <section class="lp-hero trn-hero" style="background-image: url('<?php echo esc_url(get_template_directory_uri() . '/assets/img/banner_nuts.jpg'); ?>'); background-size: cover; background-position: center;">
+    <div class="lp-hero__overlay"></div>
+    <div class="lp-hero__content">
+      <h1 class="lp-hero__title"><span class="text-gold">TORNEIOS</span></h1>
+      <p class="lp-hero__sub">Grade do dia &mdash; <strong><?php echo date('d/m/Y'); ?></strong></p>
     </div>
-  </header>
+  </section>
+
+  <section class="trn-section trn-cards-section">
+    <div class="trn-container">
+      <div class="trn-cards">
+        <?php foreach (array_slice($tournaments, 0, 4) as $t): ?>
+        <article class="trn-card">
+          <div class="trn-card__img" style="background: linear-gradient(135deg, #1a1a2e 0%, <?php echo $t['gtd'] === 'R$ 1.000.000' ? '#0f3460' : '#16213e'; ?> 100%);">
+            <span class="trn-card__suit">&#9824;</span>
+            <div class="trn-card__gtd-badge"><?php echo esc_html($t['gtd']); ?></div>
+          </div>
+          <div class="trn-card__body">
+            <h3 class="trn-card__title"><?php echo esc_html($t['nome']); ?></h3>
+            <div class="trn-card__meta">
+              <span>&#9670; <?php echo esc_html($t['inicio']); ?></span>
+              <span>Buy-in: <strong><?php echo esc_html($t['buyin']); ?></strong></span>
+              <span>Stack: <?php echo esc_html($t['stack']); ?></span>
+            </div>
+          </div>
+        </article>
+        <?php endforeach; ?>
+      </div>
+    </div>
+  </section>
 
   <section class="trn-section">
     <div class="trn-container">
