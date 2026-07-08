@@ -2,24 +2,24 @@
 // Translation system — cookie-based, no URL prefixes
 $langs = ['pt', 'en', 'es'];
 
-// Detect language from cookie
-$lang = isset($_COOKIE['lp_lang']) && in_array($_COOKIE['lp_lang'], $langs) ? $_COOKIE['lp_lang'] : 'pt';
+// Detect language from cookie (stored in GLOBALS for scope)
+$GLOBALS['lp_lang'] = isset($_COOKIE['lp_lang']) && in_array($_COOKIE['lp_lang'], $langs) ? $_COOKIE['lp_lang'] : 'pt';
 
 // Detect from browser if no cookie
 if (!isset($_COOKIE['lp_lang']) && !empty($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
     $accept = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
     if (preg_match('/\bes\b/i', $accept) && !preg_match('/\bpt\b/i', $accept)) {
-        $lang = 'es';
+        $GLOBALS['lp_lang'] = 'es';
     } elseif (preg_match('/\ben\b/i', $accept) && !preg_match('/\bpt\b/i', $accept)) {
-        $lang = 'en';
+        $GLOBALS['lp_lang'] = 'en';
     }
 }
 
 // Handle language switch via cookie
 if (isset($_GET['lang']) && in_array($_GET['lang'], $langs)) {
-    $lang = $_GET['lang'];
-    setcookie('lp_lang', $lang, time() + 365*86400, '/');
-    $_COOKIE['lp_lang'] = $lang;
+    $GLOBALS['lp_lang'] = $_GET['lang'];
+    setcookie('lp_lang', $_GET['lang'], time() + 365*86400, '/');
+    $_COOKIE['lp_lang'] = $_GET['lang'];
     // Redirect to same page without query string to keep URL clean
     $clean_url = strtok($_SERVER['REQUEST_URI'], '?');
     header('Location: ' . $clean_url);
@@ -30,7 +30,7 @@ if (isset($_GET['lang']) && in_array($_GET['lang'], $langs)) {
 $GLOBALS['nuts_t'] = [];
 
 function _tr($key) {
-    global $lang;
+    $lang = $GLOBALS['lp_lang'] ?? 'pt';
     $t = $GLOBALS['nuts_t'] ?? [];
     return $t[$lang][$key] ?? $t['pt'][$key] ?? $key;
 }
