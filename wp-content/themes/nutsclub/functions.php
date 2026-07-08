@@ -94,8 +94,8 @@ function nutsclub_poker_landing_assets() {
 .trn-filters__label{font-size:13px;color:#808080;font-weight:500;letter-spacing:0.3px}
 .trn-filters__select{background:#202020;color:#fff;border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:8px 14px;font-size:13px;font-family:inherit;cursor:pointer;transition:.2s}
 .trn-filters__select:hover,.trn-filters__select:focus{border-color:rgba(255,255,255,.2);outline:none}
-.trn-table-wrap{overflow-x:auto;border:1px solid rgba(255,255,255,.06);border-radius:16px;background:#181818}
-.trn-table{width:100%;border-collapse:collapse;min-width:700px}
+.trn-table-wrap{overflow-x:auto;border:1px solid rgba(255,255,255,.06);border-radius:16px;background:#181818;display:inline-block;min-width:100%}
+.trn-table{width:100%;border-collapse:collapse}
 .trn-table thead{background:#202020}
 .trn-table th{text-align:left;padding:14px 20px;font-size:12px;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;color:#808080;border-bottom:1px solid rgba(255,255,255,.06);white-space:nowrap}
 .trn-table td{padding:12px 20px;font-size:14px;color:#BFBFBF;border-bottom:1px solid rgba(255,255,255,.03)}
