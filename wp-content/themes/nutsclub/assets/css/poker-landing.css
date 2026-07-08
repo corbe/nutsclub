@@ -651,12 +651,12 @@ a {
   border-color: rgba(255, 255, 255, 0.2);
 }
 
-.lp-footer__social-link[aria-label="WhatsApp"]:hover {
+.lp-footer__social-link[aria-label="WhatsApp"] {
   color: #25D366;
   border-color: #25D366;
 }
 
-.lp-footer__social-link[aria-label="Instagram"]:hover {
+.lp-footer__social-link[aria-label="Instagram"] {
   color: #E4405F;
   border-color: #E4405F;
 }
