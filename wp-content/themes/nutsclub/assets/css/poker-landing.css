@@ -898,6 +898,7 @@ a {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  padding-top: 60px;
 }
 
 .trn-hero::before {
@@ -923,7 +924,7 @@ a {
   user-select: none;
   pointer-events: none;
   letter-spacing: -0.04em;
-  top: 15%;
+  top: 5%;
   left: 50%;
   transform: translateX(-50%);
   width: 95%;
@@ -962,7 +963,7 @@ a {
 }
 
 .trn-hero__card--side {
-  margin: 20px 0 0;
+  margin: 20px -30px 0;
 }
 
 .trn-hero__card--center {
