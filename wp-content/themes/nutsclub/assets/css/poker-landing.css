@@ -1127,7 +1127,7 @@ a {
 
 .trn-hero__dots {
   position: absolute;
-  top: 550px;
+  top: 585px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
