@@ -20,7 +20,7 @@ function nutsclub_setup() {
 add_action('after_setup_theme', 'nutsclub_setup');
 
 function nutsclub_scripts() {
-    if (is_page_template('page-poker.php')) {
+    if (is_page_template('page-poker.php') || is_page_template('page-torneios.php')) {
         return;
     }
     wp_enqueue_style('nutsclub-style', get_template_directory_uri() . '/assets/css/style.css', [], NUTSCLUB_VERSION);
@@ -30,7 +30,23 @@ add_action('wp_enqueue_scripts', 'nutsclub_scripts');
 
 // ===== POKER LANDING PAGE =====
 function nutsclub_poker_landing_assets() {
-    if (!is_page_template('page-poker.php') && !is_page_template('page-torneios.php')) {
+    // Check if current page is using our landing templates
+    $load = false;
+    if (is_page()) {
+        $id = get_queried_object_id();
+        $template = get_page_template_slug($id);
+        if ($template === 'page-poker.php' || $template === 'page-torneios.php') {
+            $load = true;
+        }
+    }
+    // Fallback: check post slug directly
+    if (!$load && is_page()) {
+        $post = get_queried_object();
+        if ($post && in_array($post->post_name, ['poker', 'torneios'])) {
+            $load = true;
+        }
+    }
+    if (!$load) {
         return;
     }
 

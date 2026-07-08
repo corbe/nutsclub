@@ -6,6 +6,8 @@ get_template_part('template-parts/translation');
 $is_torneios = true;
 $poker_url   = get_field('poker_url') ?: '#';
 
+get_header('blank');
+
 // Mock JSON API — simula resposta de API REST
 $highlights_json = '[
   {"title":"Daily Millions","prize":"50K","game":"NLH","buyin":"R$ 50","stack":"10.000","late":"15 min","blinds":"100/200"},
