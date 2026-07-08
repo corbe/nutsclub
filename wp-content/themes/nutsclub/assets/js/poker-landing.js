@@ -104,11 +104,11 @@
   }
 
   // === CAROUSEL (torneios) ===
-  const cards = document.querySelectorAll('.trn-hero-new__card');
-  const dots = document.querySelectorAll('.trn-hero-new__dot');
+  const cards = document.querySelectorAll('.trn-hero__card');
+  const dots = document.querySelectorAll('.trn-hero__dot');
 
-  if (cards.length && dots.length) {
-    let current = 1; // center card
+  if (cards.length >= 3) {
+    let current = 1; // center index
     const total = cards.length;
     let interval;
 
@@ -117,18 +117,15 @@
       if (index >= total) index = 0;
       current = index;
       cards.forEach((card, i) => {
-        const isCenter = i === current;
-        card.style.transform = isCenter ? 'scale(1)' : 'scale(0.82)';
-        card.style.opacity = isCenter ? '1' : '0.5';
-        card.style.zIndex = isCenter ? '3' : '1';
-        if (isCenter) {
-          card.style.margin = '0 -40px';
+        card.classList.remove('trn-hero__card--center', 'trn-hero__card--side');
+        if (i === current) {
+          card.classList.add('trn-hero__card--center');
         } else {
-          card.style.margin = '';
+          card.classList.add('trn-hero__card--side');
         }
       });
       dots.forEach((d, i) => {
-        d.classList.toggle('trn-hero-new__dot--active', i === current);
+        d.classList.toggle('trn-hero__dot--active', i === current);
       });
     }
 
@@ -151,13 +148,12 @@
 
     function resetInterval() {
       clearInterval(interval);
-      interval = setInterval(() => goToSlide(current + 1), 5000);
+      interval = setInterval(() => goToSlide((current + 1) % total), 5000);
     }
 
-    goToSlide(1);
     resetInterval();
 
-    const hero = document.querySelector('.trn-hero-new');
+    const hero = document.querySelector('.trn-hero');
     if (hero) {
       hero.addEventListener('mouseenter', () => clearInterval(interval));
       hero.addEventListener('mouseleave', resetInterval);
