@@ -840,6 +840,188 @@ a {
   }
 }
 
+/* ===== TORNEIOS PAGE ===== */
+.trn-header {
+  position: relative;
+  min-height: 40vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.trn-header__bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% 20%, rgba(0, 200, 83, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 70% 80%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
+    var(--lp-bg);
+}
+
+.trn-header__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 0%, var(--lp-bg) 100%);
+  pointer-events: none;
+}
+
+.trn-header__content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 80px 20px 60px;
+}
+
+.trn-header__title {
+  font-size: clamp(40px, 8vw, 80px);
+  font-weight: 900;
+  letter-spacing: -1.5px;
+  line-height: 1.05;
+  margin-bottom: 12px;
+}
+
+.trn-header__sub {
+  font-size: 16px;
+  color: var(--lp-text-muted);
+}
+
+.trn-header__sub strong {
+  color: var(--lp-gold);
+}
+
+.trn-section {
+  padding: 48px 0 96px;
+}
+
+.trn-container {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.trn-filters {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.trn-filters__left,
+.trn-filters__right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.trn-filters__label {
+  font-size: 13px;
+  color: var(--lp-text-muted);
+  white-space: nowrap;
+}
+
+.trn-filters__select {
+  background: var(--lp-surface);
+  color: var(--lp-text);
+  border: 1px solid var(--lp-border);
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 13px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.trn-filters__select:hover,
+.trn-filters__select:focus {
+  border-color: rgba(255, 255, 255, 0.2);
+  outline: none;
+}
+
+.trn-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--lp-border);
+  border-radius: var(--lp-radius);
+}
+
+.trn-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 700px;
+}
+
+.trn-table th {
+  text-align: left;
+  padding: 14px 16px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--lp-text-muted);
+  background: var(--lp-surface);
+  border-bottom: 1px solid var(--lp-border);
+  white-space: nowrap;
+}
+
+.trn-table td {
+  padding: 14px 16px;
+  font-size: 14px;
+  color: var(--lp-text-muted);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.trn-table tbody tr {
+  transition: background 0.15s;
+}
+
+.trn-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.trn-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.trn-table__name {
+  color: var(--lp-text);
+  font-weight: 600;
+}
+
+.trn-table__buyin {
+  color: var(--lp-text);
+  font-weight: 700;
+}
+
+.trn-table__gtd {
+  color: var(--lp-gold);
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .trn-header {
+    min-height: 30vh;
+  }
+
+  .trn-header__title {
+    font-size: 32px;
+  }
+
+  .trn-filters {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .trn-table th,
+  .trn-table td {
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+}
+
 /* ===== GLASSMORPHISM UTILITY ===== */
 .glass {
   background: rgba(255, 255, 255, 0.04);

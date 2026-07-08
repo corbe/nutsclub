@@ -30,7 +30,7 @@ add_action('wp_enqueue_scripts', 'nutsclub_scripts');
 
 // ===== POKER LANDING PAGE =====
 function nutsclub_poker_landing_assets() {
-    if (!is_page_template('page-poker.php')) {
+    if (!is_page_template('page-poker.php') && !is_page_template('page-torneios.php')) {
         return;
     }
 
