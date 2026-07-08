@@ -43,6 +43,7 @@ get_header('blank');
   <div class="trn-hero__bg-text">Torneios</div>
 
   <div class="trn-hero__carousel" id="hero-carousel">
+    <div class="trn-hero__carousel-cards">
     <?php foreach ($highlights as $i => $h): ?>
     <div class="trn-hero__card <?php echo $i === 1 ? 'trn-hero__card--center' : 'trn-hero__card--side'; ?>" data-index="<?php echo $i; ?>">
       <div class="trn-hero__card-inner">
@@ -58,6 +59,7 @@ get_header('blank');
       </div>
     </div>
     <?php endforeach; ?>
+    </div>
   </div>
 
   <div class="trn-hero__dots">
