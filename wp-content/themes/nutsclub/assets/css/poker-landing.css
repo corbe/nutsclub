@@ -967,9 +967,34 @@ a {
 
 .trn-hero__card {
   flex-shrink: 0;
-  transition: all 0.3s ease-out;
+  transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), opacity 0.4s ease, filter 0.4s ease;
   position: relative;
   cursor: pointer;
+  width: 660px;
+  height: 310px;
+}
+
+.trn-hero__card--side {
+  z-index: 1;
+  opacity: 0.7;
+  transform: scale(0.82);
+  filter: brightness(0.8);
+  margin-top: 20px;
+}
+
+.trn-hero__card--side:first-child {
+  margin-right: -120px;
+}
+
+.trn-hero__card--side:last-child {
+  margin-left: -120px;
+}
+
+.trn-hero__card--center {
+  z-index: 3;
+  transform: scale(1);
+  filter: brightness(1.05);
+  margin-top: 0;
 }
 
 .trn-hero__card--side {
@@ -1011,7 +1036,7 @@ a {
 .trn-hero__card-inner {
   width: 100%;
   height: 100%;
-  padding: 28px 40px 0;
+  padding: 32px 44px 0;
   background: linear-gradient(180deg, rgba(42,42,42,0.96) 0%, rgba(22,22,22,0.96) 100%);
   border-radius: 40px;
   border: 1px solid rgba(255,255,255,0.06);
@@ -1022,8 +1047,14 @@ a {
   align-items: center;
   overflow: hidden;
   box-sizing: border-box;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: box-shadow 0.4s ease, border 0.4s ease;
+}
+
+.trn-hero__card--center .trn-hero__card-inner {
+  box-shadow: 0 40px 100px rgba(0,0,0,0.6), 0 0 60px rgba(239,161,68,0.06);
+  background: linear-gradient(180deg, rgba(48,48,48,0.96) 0%, rgba(26,26,26,0.96) 100%);
 }
 
 .trn-hero__card--center .trn-hero__card-inner {
@@ -1172,52 +1203,54 @@ a {
 }
 
 @media (max-width: 1200px) {
-  .trn-hero__card--center { width: 580px; height: 310px; transform: scale(1.08); }
-  .trn-hero__card--side { width: 460px; height: 230px; }
+  .trn-hero__card { width: 520px; height: 270px; }
+  .trn-hero__card--side { transform: scale(0.78); }
+  .trn-hero__card--center { transform: scale(1); }
+  .trn-hero__card--side:first-child { margin-right: -100px; }
+  .trn-hero__card--side:last-child { margin-left: -100px; }
   .trn-hero__card--center .trn-hero__card-prize { font-size: 80px; }
   .trn-hero__card-prize { font-size: 48px; }
-  .trn-hero__card--center .trn-hero__card-game { font-size: 32px; }
-  .trn-hero__card-game { font-size: 20px; }
+  .trn-hero__card--center .trn-hero__card-game { font-size: 30px; }
+  .trn-hero__card-game { font-size: 18px; }
   .trn-hero__card-top { font-size: 13px; }
-  .trn-hero__card--center .trn-hero__card-top { font-size: 15px; }
-  .trn-hero__bar { height: 68px; }
-  .trn-hero__bar-value { font-size: 15px; }
+  .trn-hero__card--center .trn-hero__card-top { font-size: 14px; }
+  .trn-hero__bar { height: 64px; }
+  .trn-hero__bar-value { font-size: 14px; }
+  .trn-hero__card-inner { padding: 24px 32px 0; }
 }
 
 @media (max-width: 900px) {
   .trn-hero { height: auto; min-height: 500px; padding: 60px 0; }
-  .trn-hero__card--center { width: 400px; height: 250px; transform: scale(1.06); }
-  .trn-hero__card--side { width: 300px; height: 190px; margin-top: 25px; }
-  .trn-hero__card--side:first-child { margin-right: -100px; }
-  .trn-hero__card--side:last-child { margin-left: -100px; }
+  .trn-hero__card { width: 380px; height: 220px; }
+  .trn-hero__card--side { transform: scale(0.75); opacity: 0.6; }
+  .trn-hero__card--side:first-child { margin-right: -80px; }
+  .trn-hero__card--side:last-child { margin-left: -80px; }
   .trn-hero__card--center .trn-hero__card-prize { font-size: 56px; }
   .trn-hero__card-prize { font-size: 34px; }
   .trn-hero__card--center .trn-hero__card-game { font-size: 24px; }
-  .trn-hero__card-game { font-size: 16px; }
+  .trn-hero__card-game { font-size: 15px; }
   .trn-hero__card-top { font-size: 11px; }
   .trn-hero__card--center .trn-hero__card-top { font-size: 12px; }
-  .trn-hero__card-inner { border-radius: 28px; padding: 16px 20px 0; }
-  .trn-hero__card--center .trn-hero__card-inner { padding: 20px 24px 0; }
-  .trn-hero__bar { height: 60px; bottom: 14px; left: -12px; right: -12px; border-radius: 10px; }
+  .trn-hero__card-inner { border-radius: 28px; padding: 18px 24px 0; }
+  .trn-hero__bar { height: 56px; bottom: 14px; left: -12px; right: -12px; border-radius: 10px; padding: 0 4px; }
   .trn-hero__bar-label { font-size: 8px; }
   .trn-hero__bar-value { font-size: 12px; }
   .trn-hero__dot { gap: 10px; }
 }
 
 @media (max-width: 480px) {
-  .trn-hero__card--center { width: 280px; height: 210px; transform: none; }
+  .trn-hero__card { width: 280px; height: 200px; }
   .trn-hero__card--side { display: none; }
+  .trn-hero__card--center { transform: none; }
   .trn-hero__card--center .trn-hero__card-prize { font-size: 38px; }
   .trn-hero__card--center .trn-hero__card-game { font-size: 16px; }
   .trn-hero__card-top { font-size: 10px; }
   .trn-hero__card--center .trn-hero__card-top { font-size: 11px; }
-  .trn-hero__card-inner { border-radius: 22px; padding: 12px 14px 0; }
-  .trn-hero__card--center .trn-hero__card-inner { padding: 14px 16px 0; }
-  .trn-hero__bar { height: 48px; bottom: 10px; left: -6px; right: -6px; border-radius: 8px; }
+  .trn-hero__card-inner { border-radius: 24px; padding: 14px 18px 0; }
+  .trn-hero__bar { height: 44px; bottom: 10px; left: -6px; right: -6px; border-radius: 8px; }
   .trn-hero__bar-label { font-size: 6px; letter-spacing: 0.5px; }
   .trn-hero__bar-value { font-size: 10px; }
-  .trn-hero__dot { gap: 8px; }
-  .trn-hero__dot { width: 4px; height: 4px; }
+  .trn-hero__dot { gap: 8px; width: 4px; height: 4px; }
   .trn-hero__dot--active { width: 7px; height: 7px; }
 }
 
