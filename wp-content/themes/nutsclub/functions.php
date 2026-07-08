@@ -87,6 +87,18 @@ function nutsclub_poker_landing_assets() {
 
     wp_enqueue_style('nutsclub-poker-landing', get_template_directory_uri() . '/assets/css/poker-landing.css', [], NUTSCLUB_VERSION);
     wp_enqueue_script('nutsclub-poker-landing', get_template_directory_uri() . '/assets/js/poker-landing.js', [], NUTSCLUB_VERSION, true);
+
+    // Force table styles inline (bypass cache issues)
+    wp_add_inline_style('nutsclub-poker-landing', '
+.trn-table th{text-align:left;padding:16px 20px;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#0B0B0D;background:linear-gradient(180deg,#E8C840 0%,#D4AF37 40%,#C49A2E 100%);border-bottom:2px solid rgba(0,0,0,.15);text-shadow:0 1px 0 rgba(255,255,255,.2);box-shadow:inset 0 1px 0 rgba(255,255,255,.3)}
+.trn-table td{padding:14px 20px;font-size:14px;color:#8b949e;border-bottom:1px solid rgba(255,255,255,.04)}
+.trn-table tbody tr:nth-child(even){background:rgba(255,255,255,.04)}
+.trn-table tbody tr:hover{background:rgba(212,175,55,.06)}
+.trn-table__name{color:#fff;font-weight:600}
+.trn-table__gtd{color:#D4AF37;font-weight:700}
+.trn-table-wrap{overflow-x:auto;border:1px solid rgba(255,255,255,.06);border-radius:12px}
+.trn-pagination__btn--active{background:linear-gradient(180deg,#E8C840 0%,#D4AF37 40%,#C49A2E 100%);color:#0B0B0D;border-color:transparent}
+');
 }
 add_action('wp_enqueue_scripts', 'nutsclub_poker_landing_assets', 999);
 
