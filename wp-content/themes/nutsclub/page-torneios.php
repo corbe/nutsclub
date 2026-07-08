@@ -2,10 +2,11 @@
 /**
  * Template Name: Torneios
  */
-get_header('blank');
-
-// Seta active state no menu
+get_template_part('template-parts/translation');
 $is_torneios = true;
+$poker_url   = get_field('poker_url') ?: '#';
+
+get_header('blank');
 
 // Mock API — simula resposta de uma API REST
 $tournaments = [

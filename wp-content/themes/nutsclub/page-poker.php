@@ -1,14 +1,9 @@
 <?php
 /**
  * Template Name: Poker Landing Page
- * Description: High-conversion landing page for iGaming poker funnel.
  */
 
-// --- Translation system ---
-$langs = ['pt', 'en', 'es'];
-$lang  = isset($_COOKIE['lp_lang']) && in_array($_COOKIE['lp_lang'], $langs) ? $_COOKIE['lp_lang'] : 'pt';
-
-$t = [];
+get_template_part('template-parts/translation');
 $t['pt']['bonus']         = '100% Bonus Instant';
 $t['en']['bonus']         = '100% Instant Bonus';
 $t['es']['bonus']         = '100% Bono Instantáneo';
@@ -127,87 +122,6 @@ $t['pt']['footer_brand']    = 'NUTS POKER';
 $t['en']['footer_brand']    = 'NUTS POKER';
 $t['es']['footer_brand']    = 'NUTS POKER';
 
-$t['pt']['footer_tag']      = 'Sua mesa de poker online';
-$t['en']['footer_tag']      = 'Your online poker table';
-$t['es']['footer_tag']      = 'Tu mesa de poker online';
-
-$t['pt']['footer_termos']   = 'Termos de Uso';
-$t['en']['footer_termos']   = 'Terms of Use';
-$t['es']['footer_termos']   = 'Términos de Uso';
-
-$t['pt']['footer_priv']     = 'Privacidade';
-$t['en']['footer_priv']     = 'Privacy';
-$t['es']['footer_priv']     = 'Privacidad';
-
-$t['pt']['footer_jogo']     = 'Jogo Responsável';
-$t['en']['footer_jogo']     = 'Responsible Gaming';
-$t['es']['footer_jogo']     = 'Juego Responsable';
-
-$t['pt']['footer_contato']  = 'Contato';
-$t['en']['footer_contato']  = 'Contact';
-$t['es']['footer_contato']  = 'Contacto';
-
-$t['pt']['footer_copy']     = 'Todos os direitos reservados. 18+';
-$t['en']['footer_copy']     = 'All rights reserved. 18+';
-$t['es']['footer_copy']     = 'Todos los derechos reservados. 18+';
-
-$t['pt']['footer_warn']     = 'Jogue com responsabilidade. Se o jogo deixar de ser diversão, procure ajuda.';
-$t['en']['footer_warn']     = 'Play responsibly. If gambling stops being fun, seek help.';
-$t['es']['footer_warn']     = 'Juega con responsabilidad. Si el juego deja de ser diversión, busca ayuda.';
-
-$t['pt']['sticky_cta']      = 'Jogar Agora';
-$t['en']['sticky_cta']      = 'Play Now';
-$t['es']['sticky_cta']      = 'Juega Ahora';
-
-$t['pt']['trust_badge_18']  = '18+';
-$t['pt']['trust_badge_lic'] = 'Licenciado';
-$t['pt']['trust_badge_rng'] = 'RNG';
-$t['pt']['trust_badge_resp']= 'Jogo Resp.';
-$t['en']['trust_badge_18']  = '18+';
-$t['en']['trust_badge_lic'] = 'Licensed';
-$t['en']['trust_badge_rng'] = 'RNG';
-$t['en']['trust_badge_resp']= 'Responsible';
-$t['es']['trust_badge_18']  = '18+';
-$t['es']['trust_badge_lic'] = 'Licenciado';
-$t['es']['trust_badge_rng'] = 'RNG';
-$t['es']['trust_badge_resp']= 'Juego Resp.';
-
-$t['pt']['trust_badge_lic2']  = 'Licenciado SPA';
-$t['en']['trust_badge_lic2']  = 'SPA Licensed';
-$t['es']['trust_badge_lic2']  = 'Licenciado SPA';
-
-$t['pt']['trust_badge_rng2']  = 'RNG Testado';
-$t['en']['trust_badge_rng2']  = 'RNG Tested';
-$t['es']['trust_badge_rng2']  = 'RNG Probado';
-
-$t['pt']['trust_badge_resp2'] = 'Jogo Responsável';
-$t['en']['trust_badge_resp2'] = 'Responsible Gaming';
-$t['es']['trust_badge_resp2'] = 'Juego Responsable';
-
-$t['pt']['modal_termos']    = 'Termos de Uso';
-$t['en']['modal_termos']    = 'Terms of Use';
-$t['es']['modal_termos']    = 'Términos de Uso';
-
-$t['pt']['modal_priv']      = 'Privacidade';
-$t['en']['modal_priv']      = 'Privacy';
-$t['es']['modal_priv']      = 'Privacidad';
-
-$t['pt']['modal_jogo']      = 'Jogo Responsável';
-$t['en']['modal_jogo']      = 'Responsible Gaming';
-$t['es']['modal_jogo']      = 'Juego Responsable';
-
-$t['pt']['modal_contato']   = 'Contato';
-$t['en']['modal_contato']   = 'Contact';
-$t['es']['modal_contato']   = 'Contacto';
-
-$t['pt']['menu_torneios']   = 'Torneios';
-$t['en']['menu_torneios']   = 'Tournaments';
-$t['es']['menu_torneios']   = 'Torneos';
-
-$t['pt']['insta_link']      = 'Siga no Instagram';
-$t['en']['insta_link']      = 'Follow on Instagram';
-$t['es']['insta_link']      = 'Síguenos en Instagram';
-
 // Modal content translations
 $t['pt']['modal_termos_content'] = '<h2>Termos de Uso — Nuts Poker</h2><p>Ao acessar e utilizar a plataforma Nuts Poker, você concorda com os seguintes termos e condições. Se não concordar com qualquer parte destes termos, não utilize nossos serviços.</p><h3>1. Elegibilidade</h3><p>Você deve ter 18 anos ou mais para utilizar a plataforma. É proibido o uso por menores de idade. Reservamo-nos o direito de solicitar documentação para verificação de idade a qualquer momento.</p><h3>2. Conta de Usuário</h3><p>Você é responsável por manter a confidencialidade de sua conta e senha. Qualquer atividade realizada sob sua conta é de sua inteira responsabilidade.</p><h3>3. Depósitos e Saques</h3><p>Depósitos são processados instantaneamente. Saques são processados em até 5 minutos via Pix. Valores mínimos de depósito: R$ 20.</p><h3>4. Jogo Responsável</h3><p>Incentivamos o jogo responsável. Disponibilizamos ferramentas de autoexclusão e limites de depósito.</p><h3>5. Limitação de Responsabilidade</h3><p>A Nuts Poker não se responsabiliza por perdas decorrentes de uso indevido da plataforma ou decisões de jogo tomadas pelo usuário.</p><h3>6. Alterações</h3><p>Estes termos podem ser alterados a qualquer momento. Notificaremos usuários sobre mudanças significativas.</p>';
 $t['en']['modal_termos_content'] = '<h2>Terms of Use — Nuts Poker</h2><p>By accessing and using the Nuts Poker platform, you agree to the following terms and conditions. If you do not agree with any part of these terms, do not use our services.</p><h3>1. Eligibility</h3><p>You must be 18 years or older to use the platform. Use by minors is prohibited. We reserve the right to request age verification documentation at any time.</p><h3>2. User Account</h3><p>You are responsible for maintaining the confidentiality of your account and password. Any activity under your account is your sole responsibility.</p><h3>3. Deposits and Withdrawals</h3><p>Deposits are processed instantly. Withdrawals are processed within 5 minutes via bank transfer. Minimum deposit: R$ 20.</p><h3>4. Responsible Gaming</h3><p>We encourage responsible gaming. We provide self-exclusion tools and deposit limits.</p><h3>5. Liability Limitation</h3><p>Nuts Poker is not liable for losses resulting from misuse of the platform or player decisions.</p><h3>6. Changes</h3><p>These terms may be changed at any time. We will notify users of significant changes.</p>';
@@ -224,18 +138,6 @@ $t['es']['modal_jogo_content'] = '<h2>Juego Responsable — Nuts Poker</h2><p>Nu
 $t['pt']['modal_contato_content'] = '<h2>Contato — Nuts Poker</h2><p>Estamos aqui para ajudar. Entre em contato conosco através dos canais abaixo.</p><p><strong>E-mail:</strong> suporte@nutspoker.com.br</p><p><strong>WhatsApp:</strong> (11) 99999-8888</p><p><strong>Instagram:</strong> @nutsclub_</p><p>Responderemos o mais breve possível.</p>';
 $t['en']['modal_contato_content'] = '<h2>Contact — Nuts Poker</h2><p>We are here to help. Contact us through the channels below.</p><p><strong>Email:</strong> suporte@nutspoker.com.br</p><p><strong>WhatsApp:</strong> (11) 99999-8888</p><p><strong>Instagram:</strong> @nutsclub_</p><p>We will respond as soon as possible.</p>';
 $t['es']['modal_contato_content'] = '<h2>Contacto — Nuts Poker</h2><p>Estamos aquí para ayudarte. Contáctanos a través de los siguientes canales.</p><p><strong>Email:</strong> suporte@nutspoker.com.br</p><p><strong>WhatsApp:</strong> (11) 99999-8888</p><p><strong>Instagram:</strong> @nutsclub_</p><p>Te responderemos lo antes posible.</p>';
-
-function __t($key) {
-    global $t, $lang;
-    return $t[$lang][$key] ?? $t['pt'][$key] ?? $key;
-}
-
-// Switch language via query param
-if (isset($_GET['lang']) && in_array($_GET['lang'], ['pt','en','es'])) {
-    $lang = $_GET['lang'];
-    setcookie('lp_lang', $lang, time() + 365*86400, '/');
-    $_COOKIE['lp_lang'] = $lang;
-}
 
 $poker_url  = get_field('poker_url') ?: '#';
 
