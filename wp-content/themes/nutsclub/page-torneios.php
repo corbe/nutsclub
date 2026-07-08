@@ -82,7 +82,7 @@ get_header('blank');
     </div>
 
     <div class="trn-table-wrap">
-      <table class="trn-table">
+      <table class="trn-table" id="tournaments-table">
         <thead><tr><th>Nome</th><th>Tipo</th><th>Início</th><th>Buy-in</th><th>GTD</th><th>Stack</th><th>Blinds</th><th>Late</th></tr></thead>
         <tbody>
           <?php foreach ($all_tournaments as $t): ?>
@@ -93,9 +93,9 @@ get_header('blank');
     </div>
 
     <div class="trn-pagination" id="table-pagination">
-      <button class="trn-pagination__btn trn-pagination__btn--nav" onclick="changePage(-1)">&lsaquo;</button>
+      <button class="trn-pagination__btn trn-pagination__btn--nav" id="page-prev">&lsaquo;</button>
       <span id="page-info" style="font-size:13px;color:#808080;padding:0 8px">Página 1</span>
-      <button class="trn-pagination__btn trn-pagination__btn--nav" onclick="changePage(1)">&rsaquo;</button>
+      <button class="trn-pagination__btn trn-pagination__btn--nav" id="page-next">&rsaquo;</button>
     </div>
   </div>
 </section>

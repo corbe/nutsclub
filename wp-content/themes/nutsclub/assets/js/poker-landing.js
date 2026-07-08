@@ -207,4 +207,33 @@
 
     startRotation();
   }
+
+  // === TABLE PAGINATION ===
+  const tableBody = document.querySelector('#tournaments-table tbody');
+  const pageInfo = document.getElementById('page-info');
+  const prevBtn = document.getElementById('page-prev');
+  const nextBtn = document.getElementById('page-next');
+  const rows = tableBody ? tableBody.querySelectorAll('tr') : [];
+
+  if (rows.length) {
+    const perPage = 25;
+    let currentPage = 1;
+    const totalPages = Math.ceil(rows.length / perPage);
+
+    function showPage(page) {
+      if (page < 1 || page > totalPages) return;
+      currentPage = page;
+      const start = (page - 1) * perPage;
+      const end = start + perPage;
+      rows.forEach((row, i) => {
+        row.style.display = (i >= start && i < end) ? '' : 'none';
+      });
+      if (pageInfo) pageInfo.textContent = 'Página ' + page + ' de ' + totalPages;
+    }
+
+    if (prevBtn) prevBtn.addEventListener('click', () => showPage(currentPage - 1));
+    if (nextBtn) nextBtn.addEventListener('click', () => showPage(currentPage + 1));
+
+    showPage(1);
+  }
 })();
