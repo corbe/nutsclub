@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 600" width="1920" height="600">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0d1117"/>
+      <stop offset="50%" style="stop-color:#161b22"/>
+      <stop offset="100%" style="stop-color:#0d1117"/>
+    </linearGradient>
+    <linearGradient id="felt" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a7a3a;stop-opacity:0.15"/>
+      <stop offset="50%" style="stop-color:#2ea043;stop-opacity:0.08"/>
+      <stop offset="100%" style="stop-color:#1a7a3a;stop-opacity:0.15"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" style="stop-color:#2ea043;stop-opacity:0.3"/>
+      <stop offset="100%" style="stop-color:#2ea043;stop-opacity:0"/>
+    </linearGradient>
+    <radialGradient id="chip" cx="50%" cy="40%" r="50%">
+      <stop offset="0%" style="stop-color:#f0d060"/>
+      <stop offset="60%" style="stop-color:#d4a853"/>
+      <stop offset="100%" style="stop-color:#b8923e"/>
+    </radialGradient>
+    <radialGradient id="chip2" cx="50%" cy="40%" r="50%">
+      <stop offset="0%" style="stop-color:#e8e8e8"/>
+      <stop offset="60%" style="stop-color:#c0c0c0"/>
+      <stop offset="100%" style="stop-color:#a0a0a0"/>
+    </radialGradient>
+    <radialGradient id="chip3" cx="50%" cy="40%" r="50%">
+      <stop offset="0%" style="stop-color:#f0d060"/>
+      <stop offset="60%" style="stop-color:#e8b830"/>
+      <stop offset="100%" style="stop-color:#d4a520"/>
+    </radialGradient>
+    <linearGradient id="card1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.08"/>
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0.02"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1920" height="600" fill="url(#bg)"/>
+
+  <!-- Felt overlay -->
+  <ellipse cx="960" cy="400" rx="800" ry="300" fill="url(#felt)"/>
+
+  <!-- Glow -->
+  <ellipse cx="960" cy="300" rx="600" ry="200" fill="url(#glow)"/>
+
+  <!-- Felt table edge -->
+  <ellipse cx="960" cy="400" rx="720" ry="260" fill="none" stroke="#2ea043" stroke-width="1" stroke-opacity="0.15"/>
+  <ellipse cx="960" cy="400" rx="700" ry="250" fill="none" stroke="#2ea043" stroke-width="0.5" stroke-opacity="0.1"/>
+
+  <!-- Poker chips -->
+  <g filter="url(#shadow)">
+    <!-- Gold chip -->
+    <circle cx="300" cy="420" r="40" fill="url(#chip)"/>
+    <circle cx="300" cy="420" r="30" fill="none" stroke="#b8923e" stroke-width="2"/>
+    <circle cx="300" cy="420" r="28" fill="none" stroke="#f0d060" stroke-width="1" stroke-dasharray="4 4"/>
+    <text x="300" y="427" text-anchor="middle" font-size="18" font-weight="bold" fill="#8a6e2a">$</text>
+
+    <!-- Silver chip -->
+    <circle cx="360" cy="450" r="40" fill="url(#chip2)"/>
+    <circle cx="360" cy="450" r="30" fill="none" stroke="#a0a0a0" stroke-width="2"/>
+    <circle cx="360" cy="450" r="28" fill="none" stroke="#e8e8e8" stroke-width="1" stroke-dasharray="4 4"/>
+    <text x="360" y="457" text-anchor="middle" font-size="18" font-weight="bold" fill="#707070">$</text>
+
+    <!-- Red chip -->
+    <circle cx="330" cy="480" r="40" fill="url(#chip3)"/>
+    <circle cx="330" cy="480" r="30" fill="none" stroke="#d4a520" stroke-width="2"/>
+    <circle cx="330" cy="480" r="28" fill="none" stroke="#e06060" stroke-width="1" stroke-dasharray="4 4"/>
+    <text x="330" y="487" text-anchor="middle" font-size="18" font-weight="bold" fill="#8a6e2a">$</text>
+  </g>
+
+  <!-- Playing cards background -->
+  <!-- Card 1 -->
+  <g transform="translate(1480, 280) rotate(12)" opacity="0.12">
+    <rect width="90" height="130" rx="6" fill="#fff"/>
+    <rect x="2" y="2" width="86" height="126" rx="5" fill="none" stroke="#ddd" stroke-width="0.5"/>
+    <text x="12" y="25" font-size="16" font-weight="bold" fill="#e8b830">A</text>
+    <text x="12" y="40" font-size="12" fill="#e8b830">&#9829;</text>
+    <text x="45" y="105" font-size="32" fill="#e8b830">&#9829;</text>
+    <text x="75" y="118" font-size="10" font-weight="bold" fill="#e8b830" text-anchor="end">A</text>
+  </g>
+
+  <!-- Card 2 -->
+  <g transform="translate(1560, 300) rotate(18)" opacity="0.10">
+    <rect width="90" height="130" rx="6" fill="#fff"/>
+    <rect x="2" y="2" width="86" height="126" rx="5" fill="none" stroke="#ddd" stroke-width="0.5"/>
+    <text x="12" y="25" font-size="16" font-weight="bold" fill="#111">K</text>
+    <text x="12" y="40" font-size="12" fill="#111">&#9827;</text>
+    <text x="45" y="105" font-size="32" fill="#111">&#9827;</text>
+    <text x="75" y="118" font-size="10" font-weight="bold" fill="#111" text-anchor="end">K</text>
+  </g>
+
+  <!-- Card 3 -->
+  <g transform="translate(1400, 310) rotate(-5)" opacity="0.10">
+    <rect width="90" height="130" rx="6" fill="#fff"/>
+    <rect x="2" y="2" width="86" height="126" rx="5" fill="none" stroke="#ddd" stroke-width="0.5"/>
+    <text x="12" y="25" font-size="16" font-weight="bold" fill="#e8b830">Q</text>
+    <text x="12" y="40" font-size="12" fill="#e8b830">&#9830;</text>
+    <text x="45" y="105" font-size="32" fill="#e8b830">&#9830;</text>
+    <text x="75" y="118" font-size="10" font-weight="bold" fill="#e8b830" text-anchor="end">Q</text>
+  </g>
+
+  <!-- Card 4 -->
+  <g transform="translate(400, 200) rotate(-10)" opacity="0.08">
+    <rect width="90" height="130" rx="6" fill="#fff"/>
+    <rect x="2" y="2" width="86" height="126" rx="5" fill="none" stroke="#ddd" stroke-width="0.5"/>
+    <text x="12" y="25" font-size="16" font-weight="bold" fill="#111">10</text>
+    <text x="12" y="40" font-size="12" fill="#111">&#9824;</text>
+    <text x="45" y="105" font-size="32" fill="#111">&#9824;</text>
+    <text x="75" y="118" font-size="10" font-weight="bold" fill="#111" text-anchor="end">10</text>
+  </g>
+
+  <!-- Decorative suit patterns -->
+  <g opacity="0.03">
+    <text x="100" y="150" font-size="200" fill="#2ea043">&#9824;</text>
+    <text x="1700" y="500" font-size="160" fill="#2ea043">&#9830;</text>
+    <text x="100" y="500" font-size="140" fill="#2ea043">&#9829;</text>
+    <text x="1700" y="180" font-size="180" fill="#2ea043">&#9827;</text>
+  </g>
+
+  <!-- Subtle pattern dots -->
+  <g opacity="0.02">
+    <circle cx="200" cy="100" r="3" fill="#fff"/>
+    <circle cx="400" cy="80" r="2" fill="#fff"/>
+    <circle cx="600" cy="120" r="3" fill="#fff"/>
+    <circle cx="800" cy="60" r="2" fill="#fff"/>
+    <circle cx="1000" cy="90" r="3" fill="#fff"/>
+    <circle cx="1200" cy="70" r="2" fill="#fff"/>
+    <circle cx="1400" cy="110" r="3" fill="#fff"/>
+    <circle cx="1600" cy="80" r="2" fill="#fff"/>
+    <circle cx="1800" cy="100" r="3" fill="#fff"/>
+    <circle cx="300" cy="550" r="2" fill="#fff"/>
+    <circle cx="500" cy="570" r="3" fill="#fff"/>
+    <circle cx="700" cy="540" r="2" fill="#fff"/>
+    <circle cx="900" cy="580" r="3" fill="#fff"/>
+    <circle cx="1100" cy="550" r="2" fill="#fff"/>
+    <circle cx="1300" cy="570" r="3" fill="#fff"/>
+    <circle cx="1500" cy="540" r="2" fill="#fff"/>
+    <circle cx="1700" cy="580" r="3" fill="#fff"/>
+  </g>
+</svg>
