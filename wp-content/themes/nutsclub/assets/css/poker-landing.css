@@ -86,24 +86,46 @@ a {
   align-items: center;
   gap: 8px;
   padding: 16px 36px;
-  background: var(--lp-cta);
+  background: linear-gradient(180deg, #00E85E 0%, #00C853 40%, #00B34A 100%);
   color: #0B0B0D;
   font-weight: 700;
   font-size: 16px;
   border-radius: var(--lp-radius-sm);
-  transition: background 0.2s, transform 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s;
   border: none;
   cursor: pointer;
   line-height: 1.2;
+  position: relative;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.15),
+    0 4px 12px rgba(0, 200, 83, 0.3);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.lp-cta::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgba(255,255,255,0.15) 0%, transparent 50%, rgba(0,0,0,0.08) 100%);
+  pointer-events: none;
 }
 
 .lp-cta:hover {
-  background: var(--lp-cta-hover);
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.15),
+    0 6px 20px rgba(0, 200, 83, 0.4);
 }
 
 .lp-cta:active {
   transform: translateY(0);
+  background: linear-gradient(180deg, #00B34A 0%, #00A040 100%);
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.2),
+    0 2px 8px rgba(0, 200, 83, 0.3);
 }
 
 .lp-cta--xl {
