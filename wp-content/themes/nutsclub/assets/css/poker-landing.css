@@ -1014,6 +1014,10 @@ a {
   background: linear-gradient(180deg, rgba(48,48,48,0.96) 0%, rgba(26,26,26,0.96) 100%);
 }
 
+.trn-hero__card--side .trn-hero__bar {
+  bottom: 15px;
+}
+
 .trn-hero__card-top {
   font-family: 'Inter', sans-serif;
   font-weight: 700;
