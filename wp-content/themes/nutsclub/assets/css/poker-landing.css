@@ -925,7 +925,7 @@ a {
   user-select: none;
   pointer-events: none;
   letter-spacing: -0.06em;
-  transform: translateX(-50%) scaleX(1.15);
+  transform: translateX(-50%) scaleX(1.4);
   top: calc(5% - 75px);
   left: 50%;
   transform: translateX(-50%);
