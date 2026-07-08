@@ -1,34 +1,30 @@
 <?php
-// Translation system
+// Translation system — cookie-based, no URL prefixes
 $langs = ['pt', 'en', 'es'];
 
-// Detect language from URL prefix
-$uri   = $_SERVER['REQUEST_URI'] ?? '/';
-$parts = explode('/', trim(parse_url($uri, PHP_URL_PATH), '/'));
-$url_lang = in_array($parts[0] ?? '', $langs) ? $parts[0] : null;
-
 // Detect language from cookie
-$cookie_lang = isset($_COOKIE['lp_lang']) && in_array($_COOKIE['lp_lang'], $langs) ? $_COOKIE['lp_lang'] : null;
+$lang = isset($_COOKIE['lp_lang']) && in_array($_COOKIE['lp_lang'], $langs) ? $_COOKIE['lp_lang'] : 'pt';
 
-// Detect language from browser
-$browser_lang = 'pt';
-if (!empty($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
+// Detect from browser if no cookie
+if (!isset($_COOKIE['lp_lang']) && !empty($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
     $accept = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
-    // Check for English
-    if (preg_match('/\ben\b/i', $accept) && !preg_match('/\bpt\b/i', $accept)) {
-        $browser_lang = 'en';
-    }
-    // Check for Spanish
     if (preg_match('/\bes\b/i', $accept) && !preg_match('/\bpt\b/i', $accept)) {
-        $browser_lang = 'es';
+        $lang = 'es';
+    } elseif (preg_match('/\ben\b/i', $accept) && !preg_match('/\bpt\b/i', $accept)) {
+        $lang = 'en';
     }
 }
 
-// Priority: URL > cookie > browser > default (pt)
-$lang = $url_lang ?? $cookie_lang ?? $browser_lang;
-
-// Save to cookie
-setcookie('lp_lang', $lang, time() + 365*86400, '/');
+// Handle language switch via cookie
+if (isset($_GET['lang']) && in_array($_GET['lang'], $langs)) {
+    $lang = $_GET['lang'];
+    setcookie('lp_lang', $lang, time() + 365*86400, '/');
+    $_COOKIE['lp_lang'] = $lang;
+    // Redirect to same page without query string to keep URL clean
+    $clean_url = strtok($_SERVER['REQUEST_URI'], '?');
+    header('Location: ' . $clean_url);
+    exit;
+}
 
 // Build the main translation array into GLOBALS
 $GLOBALS['nuts_t'] = [];
@@ -83,32 +79,7 @@ if (!function_exists('__t')) {
     function __t($key) { return _tr($key); }
 }
 
-// Helper: returns URL with language prefix (only for non-pt)
-function lang_home_url($path = '/') {
-    global $lang;
-    if ($lang === 'pt') {
-        return home_url($path);
-    }
-    $path = ltrim($path, '/');
-    return home_url('/' . $lang . '/' . $path);
-}
-
-
-
-// Helper: get current page URL with language prefix
-function lang_url($target_lang) {
-    $uri  = $_SERVER['REQUEST_URI'] ?? '/';
-    $path = parse_url($uri, PHP_URL_PATH);
-    $qs   = parse_url($uri, PHP_URL_QUERY);
-    $parts = explode('/', trim($path, '/'));
-    if (in_array($parts[0] ?? '', ['pt','en','es'])) {
-        array_shift($parts);
-    }
-    if ($target_lang === 'pt') {
-        $new_path = '/' . implode('/', $parts);
-    } else {
-        $new_path = '/' . $target_lang . '/' . implode('/', $parts);
-    }
-    $new_path = rtrim($new_path, '/') . '/';
-    return $new_path . ($qs ? '?' . $qs : '');
+// Helper: returns URL with lang switch query param
+function lang_switch_url($target_lang) {
+    return '?lang=' . $target_lang;
 }
