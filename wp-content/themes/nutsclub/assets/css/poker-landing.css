@@ -824,7 +824,18 @@ a {
     padding: 56px 0;
   }
 
-  .lp-section__title {
+.section__tag {
+  display: block;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--lp-gold);
+  margin-bottom: 12px;
+}
+
+.lp-section__title {
     font-size: 24px;
     margin-bottom: 32px;
   }
