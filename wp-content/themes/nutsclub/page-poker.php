@@ -169,10 +169,10 @@ $hero_cta     = get_field('hero_cta') ?: 'Jogar Agora';
           </a>
         </div>
         <nav class="lp-footer__nav" aria-label="Links de compliance">
-          <a href="#" class="lp-footer__link">Termos de Uso</a>
-          <a href="#" class="lp-footer__link">Privacidade</a>
-          <a href="#" class="lp-footer__link">Jogo Responsável</a>
-          <a href="#" class="lp-footer__link">Contato</a>
+          <a href="#" class="lp-footer__link" data-modal="termos">Termos de Uso</a>
+          <a href="#" class="lp-footer__link" data-modal="privacidade">Privacidade</a>
+          <a href="#" class="lp-footer__link" data-modal="jogo-responsavel">Jogo Responsável</a>
+          <a href="#" class="lp-footer__link" data-modal="contato">Contato</a>
         </nav>
         <p class="lp-footer__copy">&copy; <?php echo date('Y'); ?> Nuts Poker. Todos os direitos reservados. 18+</p>
         <p class="lp-footer__warning">Jogue com responsabilidade. Se o jogo deixar de ser diversão, procure ajuda.</p>
@@ -185,5 +185,24 @@ $hero_cta     = get_field('hero_cta') ?: 'Jogar Agora';
     <a href="<?php echo esc_url($poker_url); ?>" class="lp-cta lp-sticky__btn" rel="nofollow">Jogar Agora</a>
   </div>
 </main>
+
+<?php
+// Fetch modal pages
+$modal_pages = get_posts([
+    'post__in' => [14, 15, 16, 17],
+    'post_type' => 'page',
+    'posts_per_page' => 4,
+]);
+foreach ($modal_pages as $mp) :
+    $slug = $mp->post_name;
+?>
+<div class="lp-modal" id="modal-<?php echo esc_attr($slug); ?>" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="lp-modal__backdrop" data-modal-close></div>
+  <div class="lp-modal__content">
+    <button class="lp-modal__close" data-modal-close aria-label="Fechar">&times;</button>
+    <div class="lp-modal__body"><?php echo apply_filters('the_content', $mp->post_content); ?></div>
+  </div>
+</div>
+<?php endforeach; ?>
 
 <?php get_footer('blank'); ?>
