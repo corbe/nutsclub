@@ -216,7 +216,7 @@
   const rows = tableBody ? tableBody.querySelectorAll('tr') : [];
 
   if (rows.length) {
-    const perPage = 25;
+    const perPage = 20;
     let currentPage = 1;
     const totalPages = Math.ceil(rows.length / perPage);
 
