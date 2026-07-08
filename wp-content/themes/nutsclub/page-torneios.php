@@ -31,8 +31,6 @@ get_header('blank');
 <section class="trn-hero">
   <div class="trn-hero__bg-text">Torneios</div>
 
-  <h2 class="trn-hero__section-title">Torneios</h2>
-
   <div class="trn-hero__carousel" id="hero-carousel">
     <?php foreach ($highlights as $i => $h): ?>
     <div class="trn-hero__card <?php echo $i === 1 ? 'trn-hero__card--center' : 'trn-hero__card--side'; ?>" data-index="<?php echo $i; ?>">

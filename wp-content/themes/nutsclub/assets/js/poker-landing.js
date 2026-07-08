@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  // === SCROLL REVEAL via Intersection Observer ===
+  // === SCROLL REVEAL ===
   const reveals = document.querySelectorAll('.reveal');
 
   if (reveals.length && 'IntersectionObserver' in window) {
@@ -104,27 +104,43 @@
   }
 
   // === CAROUSEL (torneios) ===
-  const carousel = document.querySelector('.trn-hero__carousel');
+  const track = document.querySelector('.trn-hero__carousel');
   const cards = document.querySelectorAll('.trn-hero__card');
   const dots = document.querySelectorAll('.trn-hero__dot');
+  const carouselWrap = document.querySelector('.trn-hero');
 
   if (cards.length >= 3) {
-    let current = 1;
+    let current = Math.floor(cards.length / 2);
     const total = cards.length;
     let interval;
+
+    function getVisibleIndices(center) {
+      const prev = center - 1 < 0 ? total - 1 : center - 1;
+      const next = center + 1 >= total ? 0 : center + 1;
+      return [prev, center, next];
+    }
 
     function goToSlide(index) {
       if (index < 0) index = total - 1;
       if (index >= total) index = 0;
       current = index;
+      const visible = getVisibleIndices(current);
+
       cards.forEach((card, i) => {
-        card.classList.remove('trn-hero__card--center', 'trn-hero__card--side');
+        card.classList.remove('trn-hero__card--center', 'trn-hero__card--side', 'trn-hero__card--hidden');
+
         if (i === current) {
           card.classList.add('trn-hero__card--center');
-        } else {
+          card.style.display = '';
+        } else if (visible.includes(i)) {
           card.classList.add('trn-hero__card--side');
+          card.style.display = '';
+        } else {
+          card.classList.add('trn-hero__card--hidden');
+          card.style.display = 'none';
         }
       });
+
       dots.forEach((d, i) => {
         d.classList.toggle('trn-hero__dot--active', i === current);
       });
@@ -147,49 +163,43 @@
       });
     });
 
-    // Drag to slide
-    if (carousel) {
+    // Drag
+    if (track) {
       let isDown = false;
       let startX = 0;
-      let moved = false;
 
-      carousel.addEventListener('mousedown', (e) => {
+      track.addEventListener('mousedown', (e) => {
         isDown = true;
         startX = e.clientX;
-        moved = false;
         e.preventDefault();
       });
 
-      carousel.addEventListener('mousemove', (e) => {
+      track.addEventListener('mousemove', (e) => {
         if (!isDown) return;
         const diff = e.clientX - startX;
-        if (Math.abs(diff) > 30) {
-          moved = true;
+        if (Math.abs(diff) > 40) {
           isDown = false;
-          if (diff < 0) {
-            goToSlide(current + 1);
-          } else {
-            goToSlide(current - 1);
-          }
+          if (diff < 0) goToSlide(current + 1);
+          else goToSlide(current - 1);
           resetInterval();
         }
       });
 
-      carousel.addEventListener('mouseup', () => { isDown = false; });
-      carousel.addEventListener('mouseleave', () => { isDown = false; });
+      track.addEventListener('mouseup', () => { isDown = false; });
+      track.addEventListener('mouseleave', () => { isDown = false; });
     }
 
     function resetInterval() {
       clearInterval(interval);
-      interval = setInterval(() => goToSlide((current + 1) % total), 5000);
+      interval = setInterval(() => goToSlide((current + 1) % total), 4500);
     }
 
+    goToSlide(current);
     resetInterval();
 
-    const hero = document.querySelector('.trn-hero');
-    if (hero) {
-      hero.addEventListener('mouseenter', () => clearInterval(interval));
-      hero.addEventListener('mouseleave', resetInterval);
+    if (carouselWrap) {
+      carouselWrap.addEventListener('mouseenter', () => clearInterval(interval));
+      carouselWrap.addEventListener('mouseleave', resetInterval);
     }
   }
 })();
