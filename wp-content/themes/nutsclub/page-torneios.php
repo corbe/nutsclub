@@ -47,8 +47,9 @@ get_header('blank');
   </div>
 
   <div class="trn-hero__dots">
-    <?php for ($i = 0; $i < 9; $i++): ?>
-    <button class="trn-hero__dot <?php echo $i === 4 ? 'trn-hero__dot--active' : ''; ?>" data-slide="<?php echo $i; ?>" aria-label="Slide <?php echo $i + 1; ?>"></button>
+    <?php $dot_count = count($highlights); $center_dot = floor(($dot_count - 1) / 2); ?>
+    <?php for ($i = 0; $i < $dot_count; $i++): ?>
+    <button class="trn-hero__dot <?php echo $i === $center_dot ? 'trn-hero__dot--active' : ''; ?>" data-slide="<?php echo $i; ?>" aria-label="Slide <?php echo $i + 1; ?>"></button>
     <?php endfor; ?>
   </div>
 </section>
