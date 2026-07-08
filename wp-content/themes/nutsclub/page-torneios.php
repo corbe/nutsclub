@@ -31,30 +31,30 @@ $all_tournaments = [
 
 <main class="trn">
   <!-- ===== BANNER HERO ===== -->
-  <section class="trn-hero-new">
-    <div class="trn-hero-new__bg-text">Torneios</div>
+  <section class="trn-hero">
+    <div class="trn-hero__bg-text">Torneios</div>
 
-    <div class="trn-hero-new__carousel" id="hero-carousel">
+    <div class="trn-hero__carousel" id="hero-carousel">
       <?php foreach ($highlights as $i => $h): ?>
-      <div class="trn-hero-new__card" data-index="<?php echo $i; ?>" style="transform: scale(<?php echo $i === 1 ? '1' : '0.82'; ?>); opacity: <?php echo $i === 1 ? '1' : '0.5'; ?>;">
-        <div class="trn-hero-new__card-inner">
-          <div class="trn-hero-new__card-title"><?php echo esc_html($h['title']); ?></div>
-          <div class="trn-hero-new__card-prize"><?php echo esc_html($h['prize']); ?></div>
-          <div class="trn-hero-new__card-game"><?php echo esc_html($h['game']); ?></div>
-          <div class="trn-hero-new__card-info">
-            <div class="trn-hero-new__info-col"><span class="trn-hero-new__info-label">BUY-IN</span><span class="trn-hero-new__info-value"><?php echo esc_html($h['buyin']); ?></span></div>
-            <div class="trn-hero-new__info-col"><span class="trn-hero-new__info-label">STACK</span><span class="trn-hero-new__info-value"><?php echo esc_html($h['stack']); ?></span></div>
-            <div class="trn-hero-new__info-col"><span class="trn-hero-new__info-label">LATE</span><span class="trn-hero-new__info-value"><?php echo esc_html($h['late']); ?></span></div>
-            <div class="trn-hero-new__info-col"><span class="trn-hero-new__info-label">BLINDS</span><span class="trn-hero-new__info-value"><?php echo esc_html($h['blinds']); ?></span></div>
+      <div class="trn-hero__card" data-index="<?php echo $i; ?>" style="transform: scale(<?php echo $i === 1 ? '1' : '0.82'; ?>); opacity: <?php echo $i === 1 ? '1' : '0.5'; ?>;">
+        <div class="trn-hero__card-inner">
+          <div class="trn-hero__card-title"><?php echo esc_html($h['title']); ?></div>
+          <div class="trn-hero__card-prize"><?php echo esc_html($h['prize']); ?></div>
+          <div class="trn-hero__card-game"><?php echo esc_html($h['game']); ?></div>
+          <div class="trn-hero__info">
+            <div class="trn-hero__info-col"><span class="trn-hero__info-label">BUY-IN</span><span class="trn-hero__info-value"><?php echo esc_html($h['buyin']); ?></span></div>
+            <div class="trn-hero__info-col"><span class="trn-hero__info-label">STACK</span><span class="trn-hero__info-value"><?php echo esc_html($h['stack']); ?></span></div>
+            <div class="trn-hero__info-col"><span class="trn-hero__info-label">LATE</span><span class="trn-hero__info-value"><?php echo esc_html($h['late']); ?></span></div>
+            <div class="trn-hero__info-col"><span class="trn-hero__info-label">BLINDS</span><span class="trn-hero__info-value"><?php echo esc_html($h['blinds']); ?></span></div>
           </div>
         </div>
       </div>
       <?php endforeach; ?>
     </div>
 
-    <div class="trn-hero-new__dots">
+    <div class="trn-hero__dots">
       <?php foreach ($highlights as $i => $h): ?>
-      <button class="trn-hero-new__dot <?php echo $i === 1 ? 'trn-hero-new__dot--active' : ''; ?>" data-slide="<?php echo $i; ?>" aria-label="Slide <?php echo $i + 1; ?>"></button>
+      <button class="trn-hero__dot <?php echo $i === 1 ? 'trn-hero__dot--active' : ''; ?>" data-slide="<?php echo $i; ?>" aria-label="Slide <?php echo $i + 1; ?>"></button>
       <?php endforeach; ?>
     </div>
   </section>

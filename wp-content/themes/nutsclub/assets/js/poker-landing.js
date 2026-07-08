@@ -104,8 +104,8 @@
   }
 
   // === CAROUSEL (torneios) ===
-  const cards = document.querySelectorAll('.trn-hero-new__card');
-  const dots = document.querySelectorAll('.trn-hero-new__dot');
+  const cards = document.querySelectorAll('.trn-hero__card');
+  const dots = document.querySelectorAll('.trn-hero__dot');
 
   if (cards.length && dots.length) {
     let current = 1; // center card
@@ -128,7 +128,7 @@
         }
       });
       dots.forEach((d, i) => {
-        d.classList.toggle('trn-hero-new__dot--active', i === current);
+        d.classList.toggle('trn-hero__dot--active', i === current);
       });
     }
 
@@ -157,7 +157,7 @@
     goToSlide(1);
     resetInterval();
 
-    const hero = document.querySelector('.trn-hero-new');
+    const hero = document.querySelector('.trn-hero');
     if (hero) {
       hero.addEventListener('mouseenter', () => clearInterval(interval));
       hero.addEventListener('mouseleave', resetInterval);
