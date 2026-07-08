@@ -401,7 +401,7 @@ get_header('blank');
     <div class="lp-container">
       <div class="lp-footer__inner">
         <div class="lp-footer__brand">
-          <span class="lp-footer__logo">&#9824; <?php echo __t('footer_brand'); ?></span>
+          <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/img/logo.png?v=' . filemtime(get_template_directory() . '/assets/img/logo.png')); ?>" alt="Nuts Poker" class="lp-footer__logo-img">
           <p class="lp-footer__tagline"><?php echo __t('footer_tag'); ?></p>
         </div>
         <div class="lp-footer__social">

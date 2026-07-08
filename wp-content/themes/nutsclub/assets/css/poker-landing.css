@@ -582,6 +582,12 @@ a {
   text-align: center;
 }
 
+.lp-footer__logo-img {
+  height: 48px;
+  width: auto;
+  margin: 0 auto 8px;
+}
+
 .lp-footer__logo {
   font-size: 18px;
   font-weight: 900;
