@@ -169,7 +169,7 @@ $hero_cta     = get_field('hero_cta') ?: 'Jogar Agora';
           </a>
         </div>
         <nav class="lp-footer__nav" aria-label="Links de compliance">
-          <a href="#" class="lp-footer__link" data-modal="termos">Termos de Uso</a>
+          <a href="#" class="lp-footer__link" data-modal="termos-de-uso">Termos de Uso</a>
           <a href="#" class="lp-footer__link" data-modal="privacidade">Privacidade</a>
           <a href="#" class="lp-footer__link" data-modal="jogo-responsavel">Jogo Responsável</a>
           <a href="#" class="lp-footer__link" data-modal="contato">Contato</a>
