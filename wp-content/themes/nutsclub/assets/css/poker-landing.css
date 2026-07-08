@@ -651,6 +651,16 @@ a {
   border-color: rgba(255, 255, 255, 0.2);
 }
 
+.lp-footer__social-link[aria-label="WhatsApp"]:hover {
+  color: #25D366;
+  border-color: #25D366;
+}
+
+.lp-footer__social-link[aria-label="Instagram"]:hover {
+  color: #E4405F;
+  border-color: #E4405F;
+}
+
 .lp-footer__nav {
   display: flex;
   justify-content: center;
