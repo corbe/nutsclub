@@ -24,6 +24,7 @@ $all_tournaments = [
 
 get_header('blank');
 ?>
+<?php get_template_part('template-parts/header-poker'); ?>
 <section class="trn-hero">
   <div class="trn-hero__bg-text">Torneios</div>
 
