@@ -83,7 +83,7 @@ if (!function_exists('__t')) {
     function __t($key) { return _tr($key); }
 }
 
-// Helper: returns URL with current language prefix
+// Helper: returns URL with language prefix (only for non-pt)
 function lang_home_url($path = '/') {
     global $lang;
     if ($lang === 'pt') {
@@ -93,9 +93,10 @@ function lang_home_url($path = '/') {
     return home_url('/' . $lang . '/' . $path);
 }
 
+
+
 // Helper: get current page URL with language prefix
 function lang_url($target_lang) {
-    global $lang;
     $uri  = $_SERVER['REQUEST_URI'] ?? '/';
     $path = parse_url($uri, PHP_URL_PATH);
     $qs   = parse_url($uri, PHP_URL_QUERY);
@@ -103,7 +104,11 @@ function lang_url($target_lang) {
     if (in_array($parts[0] ?? '', ['pt','en','es'])) {
         array_shift($parts);
     }
-    $new_path = '/' . $target_lang . '/' . implode('/', $parts);
+    if ($target_lang === 'pt') {
+        $new_path = '/' . implode('/', $parts);
+    } else {
+        $new_path = '/' . $target_lang . '/' . implode('/', $parts);
+    }
     $new_path = rtrim($new_path, '/') . '/';
     return $new_path . ($qs ? '?' . $qs : '');
 }
