@@ -92,12 +92,10 @@ get_header('blank');
       </table>
     </div>
 
-    <div class="trn-pagination">
-      <button class="trn-pagination__btn trn-pagination__btn--nav">&lsaquo;</button>
-      <button class="trn-pagination__btn trn-pagination__btn--active">1</button>
-      <button class="trn-pagination__btn">2</button>
-      <button class="trn-pagination__btn">3</button>
-      <button class="trn-pagination__btn trn-pagination__btn--nav">&rsaquo;</button>
+    <div class="trn-pagination" id="table-pagination">
+      <button class="trn-pagination__btn trn-pagination__btn--nav" onclick="changePage(-1)">&lsaquo;</button>
+      <span id="page-info" style="font-size:13px;color:#808080;padding:0 8px">Página 1</span>
+      <button class="trn-pagination__btn trn-pagination__btn--nav" onclick="changePage(1)">&rsaquo;</button>
     </div>
   </div>
 </section>
