@@ -204,6 +204,23 @@ $t['pt']['insta_link']      = 'Siga no Instagram';
 $t['en']['insta_link']      = 'Follow on Instagram';
 $t['es']['insta_link']      = 'Síguenos en Instagram';
 
+// Modal content translations
+$t['pt']['modal_termos_content'] = '<h2>Termos de Uso — Nuts Poker</h2><p>Ao acessar e utilizar a plataforma Nuts Poker, você concorda com os seguintes termos e condições. Se não concordar com qualquer parte destes termos, não utilize nossos serviços.</p><h3>1. Elegibilidade</h3><p>Você deve ter 18 anos ou mais para utilizar a plataforma. É proibido o uso por menores de idade. Reservamo-nos o direito de solicitar documentação para verificação de idade a qualquer momento.</p><h3>2. Conta de Usuário</h3><p>Você é responsável por manter a confidencialidade de sua conta e senha. Qualquer atividade realizada sob sua conta é de sua inteira responsabilidade.</p><h3>3. Depósitos e Saques</h3><p>Depósitos são processados instantaneamente. Saques são processados em até 5 minutos via Pix. Valores mínimos de depósito: R$ 20.</p><h3>4. Jogo Responsável</h3><p>Incentivamos o jogo responsável. Disponibilizamos ferramentas de autoexclusão e limites de depósito.</p><h3>5. Limitação de Responsabilidade</h3><p>A Nuts Poker não se responsabiliza por perdas decorrentes de uso indevido da plataforma ou decisões de jogo tomadas pelo usuário.</p><h3>6. Alterações</h3><p>Estes termos podem ser alterados a qualquer momento. Notificaremos usuários sobre mudanças significativas.</p>';
+$t['en']['modal_termos_content'] = '<h2>Terms of Use — Nuts Poker</h2><p>By accessing and using the Nuts Poker platform, you agree to the following terms and conditions. If you do not agree with any part of these terms, do not use our services.</p><h3>1. Eligibility</h3><p>You must be 18 years or older to use the platform. Use by minors is prohibited. We reserve the right to request age verification documentation at any time.</p><h3>2. User Account</h3><p>You are responsible for maintaining the confidentiality of your account and password. Any activity under your account is your sole responsibility.</p><h3>3. Deposits and Withdrawals</h3><p>Deposits are processed instantly. Withdrawals are processed within 5 minutes via bank transfer. Minimum deposit: R$ 20.</p><h3>4. Responsible Gaming</h3><p>We encourage responsible gaming. We provide self-exclusion tools and deposit limits.</p><h3>5. Liability Limitation</h3><p>Nuts Poker is not liable for losses resulting from misuse of the platform or player decisions.</p><h3>6. Changes</h3><p>These terms may be changed at any time. We will notify users of significant changes.</p>';
+$t['es']['modal_termos_content'] = '<h2>Términos de Uso — Nuts Poker</h2><p>Al acceder y utilizar la plataforma Nuts Poker, aceptas los siguientes términos y condiciones. Si no estás de acuerdo con alguna parte de estos términos, no utilices nuestros servicios.</p><h3>1. Elegibilidad</h3><p>Debes tener 18 años o más para utilizar la plataforma. Está prohibido el uso por menores de edad. Nos reservamos el derecho de solicitar documentación de verificación de edad en cualquier momento.</p><h3>2. Cuenta de Usuario</h3><p>Eres responsable de mantener la confidencialidad de tu cuenta y contraseña. Cualquier actividad bajo tu cuenta es de tu exclusiva responsabilidad.</p><h3>3. Depósitos y Retiros</h3><p>Los depósitos se procesan instantáneamente. Los retiros se procesan en hasta 5 minutos. Depósito mínimo: R$ 20.</p><h3>4. Juego Responsable</h3><p>Fomentamos el juego responsable. Ofrecemos herramientas de autoexclusión y límites de depósito.</p><h3>5. Limitación de Responsabilidad</h3><p>Nuts Poker no se responsabiliza por pérdidas derivadas del uso indebido de la plataforma o decisiones del jugador.</p><h3>6. Cambios</h3><p>Estos términos pueden modificarse en cualquier momento. Notificaremos a los usuarios sobre cambios significativos.</p>';
+
+$t['pt']['modal_priv_content'] = '<h2>Política de Privacidade — Nuts Poker</h2><p>Sua privacidade é importante para nós. Esta política descreve como coletamos, usamos e protegemos suas informações pessoais.</p><h3>1. Dados Coletados</h3><p>Coletamos: nome, e-mail, CPF, data de nascimento, dados de pagamento, endereço IP e tipo de navegador.</p><h3>2. Uso dos Dados</h3><p>Utilizamos para: processar transações, verificar identidade, cumprir obrigações legais e melhorar nossos serviços.</p><h3>3. Compartilhamento</h3><p>Não vendemos seus dados. Compartilhamos apenas com processadores de pagamento e autoridades regulatórias quando exigido por lei.</p><h3>4. Armazenamento</h3><p>Seus dados são armazenados em servidores seguros com criptografia SSL/TLS.</p><h3>5. Seus Direitos</h3><p>Você pode solicitar acesso, correção ou exclusão de seus dados pelo e-mail de suporte.</p>';
+$t['en']['modal_priv_content'] = '<h2>Privacy Policy — Nuts Poker</h2><p>Your privacy is important to us. This policy describes how we collect, use, and protect your personal information.</p><h3>1. Data Collected</h3><p>We collect: name, email, tax ID, date of birth, payment data, IP address, and browser type.</p><h3>2. Use of Data</h3><p>We use your data to: process transactions, verify identity, comply with legal obligations, and improve our services.</p><h3>3. Sharing</h3><p>We do not sell your data. We only share with payment processors and regulatory authorities when required by law.</p><h3>4. Storage</h3><p>Your data is stored on secure servers with SSL/TLS encryption.</p><h3>5. Your Rights</h3><p>You can request access, correction, or deletion of your data via our support email.</p>';
+$t['es']['modal_priv_content'] = '<h2>Política de Privacidad — Nuts Poker</h2><p>Tu privacidad es importante para nosotros. Esta política describe cómo recopilamos, usamos y protegemos tu información personal.</p><h3>1. Datos Recopilados</h3><p>Recopilamos: nombre, correo electrónico, CPF, fecha de nacimiento, datos de pago, dirección IP y tipo de navegador.</p><h3>2. Uso de Datos</h3><p>Utilizamos tus datos para: procesar transacciones, verificar identidad, cumplir obligaciones legales y mejorar nuestros servicios.</p><h3>3. Compartición</h3><p>No vendemos tus datos. Solo compartimos con procesadores de pago y autoridades regulatorias cuando lo exige la ley.</p><h3>4. Almacenamiento</h3><p>Tus datos se almacenan en servidores seguros con cifrado SSL/TLS.</p><h3>5. Tus Derechos</h3><p>Puedes solicitar acceso, corrección o eliminación de tus datos a través de nuestro correo de soporte.</p>';
+
+$t['pt']['modal_jogo_content'] = '<h2>Jogo Responsável — Nuts Poker</h2><p>O Nuts Poker está comprometido com a prática do jogo responsável. Queremos que você se divirta com segurança e consciência.</p><h3>Dicas para Jogar com Responsabilidade</h3><ul><li><strong>Defina limites:</strong> Estabeleça um orçamento e nunca ultrapasse esse valor.</li><li><strong>Controle o tempo:</strong> Faça pausas regulares e não deixe o jogo interferir em suas obrigações.</li><li><strong>Não persiga perdas:</strong> Aceite que perder faz parte do jogo. Nunca tente recuperar perdas com apostas maiores.</li><li><strong>Jogue por diversão:</strong> O poker deve ser uma forma de entretenimento, não uma fonte de renda.</li></ul><h3>Ferramentas de Proteção</h3><p>Disponibilizamos limites de depósito, autoexclusão, limites de tempo de jogo e histórico completo de transações.</p><h3>Ajuda Profissional</h3><p>Se você ou alguém que conhece precisa de ajuda, procure o PRO-AMJE ou auxílio psicológico profissional.</p>';
+$t['en']['modal_jogo_content'] = '<h2>Responsible Gaming — Nuts Poker</h2><p>Nuts Poker is committed to responsible gaming. We want you to have fun safely and consciously.</p><h3>Tips for Playing Responsibly</h3><ul><li><strong>Set limits:</strong> Establish a budget and never exceed it.</li><li><strong>Control your time:</strong> Take regular breaks and do not let gaming interfere with your obligations.</li><li><strong>Do not chase losses:</strong> Accept that losing is part of the game. Never try to recover losses with larger bets.</li><li><strong>Play for fun:</strong> Poker should be entertainment, not a source of income.</li></ul><h3>Protection Tools</h3><p>We offer deposit limits, self-exclusion, time limits, and full transaction history.</p><h3>Professional Help</h3><p>If you or someone you know needs help, seek professional psychological assistance or contact responsible gaming organizations.</p>';
+$t['es']['modal_jogo_content'] = '<h2>Juego Responsable — Nuts Poker</h2><p>Nuts Poker está comprometido con el juego responsable. Queremos que te diviertas con seguridad y conciencia.</p><h3>Consejos para Jugar Responsablemente</h3><ul><li><strong>Establece límites:</strong> Define un presupuesto y nunca lo superes.</li><li><strong>Controla el tiempo:</strong> Toma descansos regulares y no dejes que el juego interfiera con tus obligaciones.</li><li><strong>No persigas pérdidas:</strong> Acepta que perder es parte del juego. Nunca intentes recuperar pérdidas con apuestas mayores.</li><li><strong>Juega por diversión:</strong> El póker debe ser entretenimiento, no una fuente de ingresos.</li></ul><h3>Herramientas de Protección</h3><p>Ofrecemos límites de depósito, autoexclusión, límites de tiempo e historial completo de transacciones.</p><h3>Ayuda Profesional</h3><p>Si tú o alguien que conoces necesita ayuda, busca asistencia psicológica profesional u organizaciones de juego responsable.</p>';
+
+$t['pt']['modal_contato_content'] = '<h2>Contato — Nuts Poker</h2><p>Estamos aqui para ajudar. Entre em contato conosco através dos canais abaixo.</p><p><strong>E-mail:</strong> suporte@nutspoker.com.br</p><p><strong>WhatsApp:</strong> (11) 99999-8888</p><p><strong>Instagram:</strong> @nutsclub_</p><p>Responderemos o mais breve possível.</p>';
+$t['en']['modal_contato_content'] = '<h2>Contact — Nuts Poker</h2><p>We are here to help. Contact us through the channels below.</p><p><strong>Email:</strong> suporte@nutspoker.com.br</p><p><strong>WhatsApp:</strong> (11) 99999-8888</p><p><strong>Instagram:</strong> @nutsclub_</p><p>We will respond as soon as possible.</p>';
+$t['es']['modal_contato_content'] = '<h2>Contacto — Nuts Poker</h2><p>Estamos aquí para ayudarte. Contáctanos a través de los siguientes canales.</p><p><strong>Email:</strong> suporte@nutspoker.com.br</p><p><strong>WhatsApp:</strong> (11) 99999-8888</p><p><strong>Instagram:</strong> @nutsclub_</p><p>Te responderemos lo antes posible.</p>';
+
 function __t($key) {
     global $t, $lang;
     return $t[$lang][$key] ?? $t['pt'][$key] ?? $key;
@@ -397,23 +414,33 @@ get_header('blank');
   </div>
 </main>
 
-<?php
-// Modal pages
-$modal_pages = get_posts([
-    'post__in' => [14, 15, 16, 17],
-    'post_type' => 'page',
-    'posts_per_page' => 4,
-]);
-foreach ($modal_pages as $mp) :
-    $slug = $mp->post_name;
-?>
-<div class="lp-modal" id="modal-<?php echo esc_attr($slug); ?>" role="dialog" aria-modal="true" aria-hidden="true">
+<div class="lp-modal" id="modal-termos-de-uso" role="dialog" aria-modal="true" aria-hidden="true">
   <div class="lp-modal__backdrop" data-modal-close></div>
   <div class="lp-modal__content">
     <button class="lp-modal__close" data-modal-close aria-label="Fechar">&times;</button>
-    <div class="lp-modal__body"><?php echo apply_filters('the_content', $mp->post_content); ?></div>
+    <div class="lp-modal__body"><?php echo __t('modal_termos_content'); ?></div>
   </div>
 </div>
-<?php endforeach; ?>
+<div class="lp-modal" id="modal-privacidade" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="lp-modal__backdrop" data-modal-close></div>
+  <div class="lp-modal__content">
+    <button class="lp-modal__close" data-modal-close aria-label="Fechar">&times;</button>
+    <div class="lp-modal__body"><?php echo __t('modal_priv_content'); ?></div>
+  </div>
+</div>
+<div class="lp-modal" id="modal-jogo-responsavel" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="lp-modal__backdrop" data-modal-close></div>
+  <div class="lp-modal__content">
+    <button class="lp-modal__close" data-modal-close aria-label="Fechar">&times;</button>
+    <div class="lp-modal__body"><?php echo __t('modal_jogo_content'); ?></div>
+  </div>
+</div>
+<div class="lp-modal" id="modal-contato" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="lp-modal__backdrop" data-modal-close></div>
+  <div class="lp-modal__content">
+    <button class="lp-modal__close" data-modal-close aria-label="Fechar">&times;</button>
+    <div class="lp-modal__body"><?php echo __t('modal_contato_content'); ?></div>
+  </div>
+</div>
 
 <?php get_footer('blank'); ?>
