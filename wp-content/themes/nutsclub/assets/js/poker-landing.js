@@ -104,10 +104,8 @@
   }
 
   // === CAROUSEL (torneios) ===
-  const track = document.querySelector('.trn-hero__carousel');
   const cards = document.querySelectorAll('.trn-hero__card');
   const dots = document.querySelectorAll('.trn-hero__dot');
-  const carouselWrap = document.querySelector('.trn-hero');
 
   if (cards.length >= 3) {
     let current = Math.floor(cards.length / 2);
@@ -146,10 +144,13 @@
       });
     }
 
+    goToSlide(current);
+
     dots.forEach((dot) => {
       dot.addEventListener('click', () => {
         goToSlide(parseInt(dot.getAttribute('data-slide')));
-        resetInterval();
+        clearInterval(interval);
+        startRotation();
       });
     });
 
@@ -158,12 +159,14 @@
         const idx = parseInt(this.getAttribute('data-index'));
         if (idx !== current) {
           goToSlide(idx);
-          resetInterval();
+          clearInterval(interval);
+          startRotation();
         }
       });
     });
 
     // Drag
+    const track = document.querySelector('.trn-hero__carousel');
     if (track) {
       let isDown = false;
       let startX = 0;
@@ -171,7 +174,6 @@
       track.addEventListener('mousedown', (e) => {
         isDown = true;
         startX = e.clientX;
-        e.preventDefault();
       });
 
       track.addEventListener('mousemove', (e) => {
@@ -179,9 +181,9 @@
         const diff = e.clientX - startX;
         if (Math.abs(diff) > 40) {
           isDown = false;
-          if (diff < 0) goToSlide(current + 1);
-          else goToSlide(current - 1);
-          resetInterval();
+          goToSlide(diff < 0 ? current + 1 : current - 1);
+          clearInterval(interval);
+          startRotation();
         }
       });
 
@@ -189,17 +191,11 @@
       track.addEventListener('mouseleave', () => { isDown = false; });
     }
 
-    function resetInterval() {
+    function startRotation() {
       clearInterval(interval);
-      interval = setInterval(() => goToSlide((current + 1) % total), 4500);
+      interval = setInterval(() => goToSlide((current + 1) % total), 3500);
     }
 
-    goToSlide(current);
-    resetInterval();
-
-    if (carouselWrap) {
-      carouselWrap.addEventListener('mouseenter', () => clearInterval(interval));
-      carouselWrap.addEventListener('mouseleave', resetInterval);
-    }
+    startRotation();
   }
 })();
