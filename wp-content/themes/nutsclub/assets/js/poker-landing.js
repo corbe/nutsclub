@@ -124,18 +124,27 @@
       current = index;
       const visible = getVisibleIndices(current);
 
+      // Reorder: prev, center, next → order 0, 1, 2
+      const orderMap = {};
+      orderMap[visible[0]] = 0;
+      orderMap[visible[1]] = 1;
+      orderMap[visible[2]] = 2;
+
       cards.forEach((card, i) => {
         card.classList.remove('trn-hero__card--center', 'trn-hero__card--side', 'trn-hero__card--hidden');
 
         if (i === current) {
           card.classList.add('trn-hero__card--center');
           card.style.display = '';
+          card.style.order = orderMap[i] ?? 1;
         } else if (visible.includes(i)) {
           card.classList.add('trn-hero__card--side');
           card.style.display = '';
+          card.style.order = orderMap[i] ?? 0;
         } else {
           card.classList.add('trn-hero__card--hidden');
           card.style.display = 'none';
+          card.style.order = '';
         }
       });
 
