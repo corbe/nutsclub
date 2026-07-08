@@ -104,11 +104,12 @@
   }
 
   // === CAROUSEL (torneios) ===
+  const carousel = document.querySelector('.trn-hero__carousel');
   const cards = document.querySelectorAll('.trn-hero__card');
   const dots = document.querySelectorAll('.trn-hero__dot');
 
   if (cards.length >= 3) {
-    let current = 1; // center index
+    let current = 1;
     const total = cards.length;
     let interval;
 
@@ -145,6 +146,38 @@
         }
       });
     });
+
+    // Drag to slide
+    if (carousel) {
+      let isDown = false;
+      let startX = 0;
+      let moved = false;
+
+      carousel.addEventListener('mousedown', (e) => {
+        isDown = true;
+        startX = e.clientX;
+        moved = false;
+        e.preventDefault();
+      });
+
+      carousel.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        const diff = e.clientX - startX;
+        if (Math.abs(diff) > 30) {
+          moved = true;
+          isDown = false;
+          if (diff < 0) {
+            goToSlide(current + 1);
+          } else {
+            goToSlide(current - 1);
+          }
+          resetInterval();
+        }
+      });
+
+      carousel.addEventListener('mouseup', () => { isDown = false; });
+      carousel.addEventListener('mouseleave', () => { isDown = false; });
+    }
 
     function resetInterval() {
       clearInterval(interval);
