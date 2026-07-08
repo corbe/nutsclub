@@ -61,12 +61,12 @@ get_header('blank');
   <div class="trn-container">
     <div class="trn-filters">
       <div class="trn-filters__left">
-        <label class="trn-filters__label">Buy-in</label>
-        <select class="trn-filters__select"><option value="all">Todos</option><option value="free">Grátis</option><option value="low">Até R$ 50</option><option value="mid">R$ 50 - R$ 200</option><option value="high">R$ 200+</option></select>
+        <label class="trn-filters__label" for="filter-buyin">Buy-in</label>
+        <select class="trn-filters__select" id="filter-buyin" name="buyin"><option value="all">Todos</option><option value="free">Grátis</option><option value="low">Até R$ 50</option><option value="mid">R$ 50 - R$ 200</option><option value="high">R$ 200+</option></select>
       </div>
       <div class="trn-filters__right">
-        <label class="trn-filters__label">Itens por página</label>
-        <select class="trn-filters__select"><option value="10">10</option><option value="15" selected>15</option><option value="25">25</option><option value="50">50</option></select>
+        <label class="trn-filters__label" for="filter-perpage">Itens por página</label>
+        <select class="trn-filters__select" id="filter-perpage" name="perpage"><option value="10">10</option><option value="15" selected>15</option><option value="25">25</option><option value="50">50</option></select>
       </div>
     </div>
 
