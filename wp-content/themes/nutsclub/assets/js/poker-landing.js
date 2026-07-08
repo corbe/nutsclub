@@ -80,4 +80,26 @@
       });
     }
   });
+
+  // === LANGUAGE DROPDOWN ===
+  const langToggle = document.querySelector('.lp-lang__toggle');
+  const langMenu = document.querySelector('.lp-lang__menu');
+
+  if (langToggle && langMenu) {
+    langToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = langMenu.classList.contains('lp-lang__menu--open');
+      langMenu.classList.toggle('lp-lang__menu--open');
+      langToggle.setAttribute('aria-expanded', !isOpen);
+    });
+
+    document.addEventListener('click', () => {
+      langMenu.classList.remove('lp-lang__menu--open');
+      langToggle.setAttribute('aria-expanded', 'false');
+    });
+
+    langMenu.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+  }
 })();
