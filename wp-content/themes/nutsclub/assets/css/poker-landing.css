@@ -941,7 +941,7 @@ a {
   z-index: 2;
   width: 100%;
   max-width: 1500px;
-  margin: 0 auto;
+  margin: 300px auto 0;
   padding: 0 20px;
   min-height: 400px;
 }
