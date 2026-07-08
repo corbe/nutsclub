@@ -242,7 +242,7 @@ get_header('blank');
   <header class="lp-header">
     <div class="lp-header__inner">
       <a href="<?php echo esc_url(home_url('/')); ?>" class="lp-header__logo" aria-label="Nuts Poker">
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/img/logo.png'); ?>" alt="Nuts Poker" style="height: 40px; width: auto;">
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/img/logo.png?v=' . filemtime(get_template_directory() . '/assets/img/logo.png')); ?>" alt="Nuts Poker" style="height: 40px; width: auto;">
       </a>
       <div class="lp-header__right">
         <div class="lp-lang">
