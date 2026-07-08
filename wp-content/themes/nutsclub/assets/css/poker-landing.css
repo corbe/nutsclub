@@ -986,14 +986,6 @@ a {
   filter: brightness(0.85);
 }
 
-.trn-hero__card--side:first-child {
-  margin-right: -140px;
-}
-
-.trn-hero__card--side:last-child {
-  margin-left: -140px;
-}
-
 .trn-hero__card--center {
   z-index: 3;
   width: 740px;
@@ -1187,8 +1179,6 @@ a {
   .trn-hero__card { width: 520px; height: 270px; }
   .trn-hero__card--side { transform: scale(0.78); }
   .trn-hero__card--center { transform: scale(1); }
-  .trn-hero__card--side:first-child { margin-right: -100px; }
-  .trn-hero__card--side:last-child { margin-left: -100px; }
   .trn-hero__card--center .trn-hero__card-prize { font-size: 80px; }
   .trn-hero__card-prize { font-size: 48px; }
   .trn-hero__card--center .trn-hero__card-game { font-size: 30px; }
@@ -1204,8 +1194,6 @@ a {
   .trn-hero { height: auto; min-height: 500px; padding: 60px 0; }
   .trn-hero__card { width: 380px; height: 220px; }
   .trn-hero__card--side { transform: scale(0.75); opacity: 0.6; }
-  .trn-hero__card--side:first-child { margin-right: -80px; }
-  .trn-hero__card--side:last-child { margin-left: -80px; }
   .trn-hero__card--center .trn-hero__card-prize { font-size: 56px; }
   .trn-hero__card-prize { font-size: 34px; }
   .trn-hero__card--center .trn-hero__card-game { font-size: 24px; }
