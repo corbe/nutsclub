@@ -15,22 +15,17 @@ $hero_cta     = get_field('hero_cta') ?: 'Jogar Agora';
 
 <main class="lp" id="top">
   <!-- ===== HEADER ===== -->
-  <header class="lp-header">
+  <header class="lp-header" style="background-image: url('<?php echo esc_url(get_template_directory_uri() . '/assets/img/bg_header.png'); ?>'); background-size: auto 100%; background-repeat: repeat-x;">
     <div class="lp-header__inner">
       <a href="<?php echo esc_url(home_url('/')); ?>" class="lp-header__logo" aria-label="Nuts Poker">
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-          <rect width="32" height="32" rx="6" fill="#D4AF37"/>
-          <text x="16" y="22" text-anchor="middle" font-size="18" font-weight="900" fill="#0B0B0D">&#9824;</text>
-        </svg>
-        <span class="lp-header__logo-text">NUTS POKER</span>
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/img/logo.png'); ?>" alt="Nuts Poker" style="height: 40px; width: auto;">
       </a>
       <a href="<?php echo esc_url($poker_url); ?>" class="lp-header__login" rel="nofollow">Log In</a>
     </div>
   </header>
 
   <!-- ===== HERO ===== -->
-  <section class="lp-hero">
-    <div class="lp-hero__bg"></div>
+  <section class="lp-hero" style="background-image: url('<?php echo esc_url(get_template_directory_uri() . '/assets/img/banner_nuts.jpg'); ?>'); background-size: cover; background-position: center;">
     <div class="lp-hero__overlay"></div>
     <div class="lp-hero__content">
       <div class="lp-hero__badge"><?php echo esc_html($bonus_text); ?></div>
