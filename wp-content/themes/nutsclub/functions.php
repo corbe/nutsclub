@@ -90,14 +90,27 @@ function nutsclub_poker_landing_assets() {
 
     // Force table styles inline (bypass cache issues)
     wp_add_inline_style('nutsclub-poker-landing', '
-.trn-table th{text-align:left;padding:16px 20px;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#0B0B0D;background:linear-gradient(180deg,#E8C840 0%,#D4AF37 40%,#C49A2E 100%);border-bottom:2px solid rgba(0,0,0,.15);text-shadow:0 1px 0 rgba(255,255,255,.2);box-shadow:inset 0 1px 0 rgba(255,255,255,.3)}
-.trn-table td{padding:14px 20px;font-size:14px;color:#8b949e;border-bottom:1px solid rgba(255,255,255,.04)}
-.trn-table tbody tr:nth-child(even){background:rgba(255,255,255,.04)}
-.trn-table tbody tr:hover{background:rgba(212,175,55,.06)}
+.trn-filters{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:24px;flex-wrap:wrap}
+.trn-filters__label{font-size:13px;color:#808080;font-weight:500;letter-spacing:0.3px}
+.trn-filters__select{background:#202020;color:#fff;border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:8px 14px;font-size:13px;font-family:inherit;cursor:pointer;transition:.2s}
+.trn-filters__select:hover,.trn-filters__select:focus{border-color:rgba(255,255,255,.2);outline:none}
+.trn-table-wrap{overflow-x:auto;border:1px solid rgba(255,255,255,.06);border-radius:16px;background:#181818}
+.trn-table{width:100%;border-collapse:collapse;min-width:700px}
+.trn-table thead{background:#202020}
+.trn-table th{text-align:left;padding:14px 20px;font-size:12px;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;color:#808080;border-bottom:1px solid rgba(255,255,255,.06);white-space:nowrap}
+.trn-table td{padding:12px 20px;font-size:14px;color:#BFBFBF;border-bottom:1px solid rgba(255,255,255,.03)}
+.trn-table tbody tr{transition:.15s;background:transparent}
+.trn-table tbody tr:nth-child(even){background:rgba(255,255,255,.02)}
+.trn-table tbody tr:hover{background:rgba(245,166,59,.05)}
+.trn-table tbody tr:last-child td{border-bottom:none}
 .trn-table__name{color:#fff;font-weight:600}
-.trn-table__gtd{color:#D4AF37;font-weight:700}
-.trn-table-wrap{overflow-x:auto;border:1px solid rgba(255,255,255,.06);border-radius:12px}
-.trn-pagination__btn--active{background:linear-gradient(180deg,#E8C840 0%,#D4AF37 40%,#C49A2E 100%);color:#0B0B0D;border-color:transparent}
+.trn-table__buyin{color:#fff;font-weight:600}
+.trn-table__gtd{color:#F5A63B;font-weight:700}
+.trn-pagination{display:flex;align-items:center;justify-content:center;gap:4px;margin-top:24px;flex-wrap:wrap}
+.trn-pagination__btn{display:inline-flex;align-items:center;justify-content:center;min-width:36px;height:36px;padding:0 10px;font-size:13px;font-weight:500;color:#808080;background:transparent;border:1px solid rgba(255,255,255,.06);border-radius:8px;cursor:pointer;transition:.2s;font-family:inherit}
+.trn-pagination__btn:hover{border-color:rgba(255,255,255,.15);color:#fff;background:rgba(255,255,255,.03)}
+.trn-pagination__btn--active{background:#F5A63B;color:#0B0B0D;border-color:transparent;font-weight:600}
+.trn-pagination__btn--active:hover{background:#E8972A;color:#0B0B0D}
 ');
 }
 add_action('wp_enqueue_scripts', 'nutsclub_poker_landing_assets', 999);
