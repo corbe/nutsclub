@@ -4,8 +4,58 @@
  */
 get_header('blank');
 
+// Seta active state no menu
+$is_torneios = true;
+
 // Mock API — simula resposta de uma API REST
 $tournaments = [
+    [
+        'nome' => 'Daily Millions',
+        'tipo' => 'Texas Hold\'em',
+        'inicio' => '10:00',
+        'buyin' => 'R$ 50',
+        'gtd' => 'R$ 50.000',
+        'stack' => '10.000',
+        'blinds' => '100/200',
+        'late' => '15 min',
+        'gradient' => 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)',
+    ],
+    [
+        'nome' => 'Deep Stack Turbo',
+        'tipo' => 'Texas Hold\'em',
+        'inicio' => '12:00',
+        'buyin' => 'R$ 100',
+        'gtd' => 'R$ 100.000',
+        'stack' => '25.000',
+        'blinds' => '200/400',
+        'late' => '30 min',
+        'gradient' => 'linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%)',
+    ],
+    [
+        'nome' => 'Milionário Garantido',
+        'tipo' => 'Texas Hold\'em',
+        'inicio' => '16:00',
+        'buyin' => 'R$ 250',
+        'gtd' => 'R$ 1.000.000',
+        'stack' => '50.000',
+        'blinds' => '500/1.000',
+        'late' => '60 min',
+        'gradient' => 'linear-gradient(135deg, #0a0a1a 0%, #1a0a2e 100%)',
+    ],
+    [
+        'nome' => 'Nightly Knockout',
+        'tipo' => 'Texas Hold\'em',
+        'inicio' => '19:00',
+        'buyin' => 'R$ 80',
+        'gtd' => 'R$ 75.000',
+        'stack' => '15.000',
+        'blinds' => '150/300',
+        'late' => '20 min',
+        'gradient' => 'linear-gradient(135deg, #1a1a2e 0%, #2d1b2e 100%)',
+    ],
+];
+
+$all_tournaments = [
     [
         'nome' => 'Daily Millions',
         'tipo' => 'Texas Hold\'em',
@@ -89,38 +139,39 @@ $tournaments = [
 ];
 ?>
 
+<?php get_template_part('template-parts/header-poker'); ?>
+
 <main class="trn">
-  <section class="lp-hero trn-hero" style="background-image: url('<?php echo esc_url(get_template_directory_uri() . '/assets/img/banner_nuts.jpg'); ?>'); background-size: cover; background-position: center;">
-    <div class="lp-hero__overlay"></div>
-    <div class="lp-hero__content">
-      <h1 class="lp-hero__title"><span class="text-gold">TORNEIOS</span></h1>
-      <p class="lp-hero__sub">Grade do dia &mdash; <strong><?php echo date('d/m/Y'); ?></strong></p>
-    </div>
-  </section>
-
-  <section class="trn-section trn-cards-section">
-    <div class="trn-container">
-      <div class="trn-cards">
-        <?php foreach (array_slice($tournaments, 0, 4) as $t): ?>
-        <article class="trn-card">
-          <div class="trn-card__img" style="background: linear-gradient(135deg, #1a1a2e 0%, <?php echo $t['gtd'] === 'R$ 1.000.000' ? '#0f3460' : '#16213e'; ?> 100%);">
-            <span class="trn-card__suit">&#9824;</span>
-            <div class="trn-card__gtd-badge"><?php echo esc_html($t['gtd']); ?></div>
+  <!-- ===== CIRCULAR BANNER CAROUSEL ===== -->
+  <section class="trn-carousel" id="trn-carousel" aria-label="Destaques dos torneios">
+    <div class="trn-carousel__track">
+      <?php foreach ($tournaments as $i => $t): ?>
+      <div class="trn-carousel__slide" data-index="<?php echo $i; ?>" style="background: <?php echo $t['gradient']; ?>;">
+        <div class="trn-carousel__overlay"></div>
+        <div class="trn-carousel__content">
+          <span class="trn-carousel__badge">&#9670; AO VIVO</span>
+          <h2 class="trn-carousel__title"><?php echo esc_html($t['nome']); ?></h2>
+          <div class="trn-carousel__stats">
+            <span><strong><?php echo esc_html($t['gtd']); ?></strong> em prêmios</span>
+            <span class="trn-carousel__sep">|</span>
+            <span>Buy-in: <strong><?php echo esc_html($t['buyin']); ?></strong></span>
+            <span class="trn-carousel__sep">|</span>
+            <span>Início: <strong><?php echo esc_html($t['inicio']); ?></strong></span>
           </div>
-          <div class="trn-card__body">
-            <h3 class="trn-card__title"><?php echo esc_html($t['nome']); ?></h3>
-            <div class="trn-card__meta">
-              <span>&#9670; <?php echo esc_html($t['inicio']); ?></span>
-              <span>Buy-in: <strong><?php echo esc_html($t['buyin']); ?></strong></span>
-              <span>Stack: <?php echo esc_html($t['stack']); ?></span>
-            </div>
-          </div>
-        </article>
-        <?php endforeach; ?>
+        </div>
       </div>
+      <?php endforeach; ?>
+    </div>
+
+    <div class="trn-carousel__nav">
+      <button class="trn-carousel__dot" data-slide="0" aria-label="Slide 1"></button>
+      <button class="trn-carousel__dot" data-slide="1" aria-label="Slide 2"></button>
+      <button class="trn-carousel__dot" data-slide="2" aria-label="Slide 3"></button>
+      <button class="trn-carousel__dot" data-slide="3" aria-label="Slide 4"></button>
     </div>
   </section>
 
+  <!-- ===== TABLE SECTION ===== -->
   <section class="trn-section">
     <div class="trn-container">
       <div class="trn-filters">
@@ -160,7 +211,7 @@ $tournaments = [
             </tr>
           </thead>
           <tbody>
-            <?php foreach ($tournaments as $t): ?>
+            <?php foreach ($all_tournaments as $t): ?>
             <tr>
               <td class="trn-table__name"><?php echo esc_html($t['nome']); ?></td>
               <td><?php echo esc_html($t['tipo']); ?></td>
@@ -175,8 +226,17 @@ $tournaments = [
           </tbody>
         </table>
       </div>
+
+      <div class="trn-pagination" id="trn-pagination">
+        <button class="trn-pagination__btn trn-pagination__btn--nav" data-page="prev" aria-label="Anterior">&lsaquo;</button>
+        <button class="trn-pagination__btn trn-pagination__btn--active" data-page="1">1</button>
+        <button class="trn-pagination__btn" data-page="2">2</button>
+        <button class="trn-pagination__btn" data-page="3">3</button>
+        <button class="trn-pagination__btn trn-pagination__btn--nav" data-page="next" aria-label="Próximo">&rsaquo;</button>
+      </div>
     </div>
   </section>
 </main>
 
+<?php get_template_part('template-parts/footer-poker'); ?>
 <?php get_footer('blank'); ?>
