@@ -16,14 +16,25 @@ $highlights = [
   ['title'=>'#Turbo KO','prize'=>'40K','game'=>'PKO','time'=>'01:00 AM','buyin'=>'R$ 40','stack'=>'8.000','late'=>'10 min','blinds'=>'80/160']
 ];
 
-$all_tournaments = [
-  ['nome'=>'Daily Millions','tipo'=>'Texas Holdem','inicio'=>'10:00','buyin'=>'R$ 50','gtd'=>'R$ 50.000','stack'=>'10.000','blinds'=>'100/200','late'=>'15 min'],
-  ['nome'=>'Deep Stack Turbo','tipo'=>'Texas Holdem','inicio'=>'12:00','buyin'=>'R$ 100','gtd'=>'R$ 100.000','stack'=>'25.000','blinds'=>'200/400','late'=>'30 min'],
-  ['nome'=>'Omaha Hi/Lo','tipo'=>'Omaha','inicio'=>'14:00','buyin'=>'R$ 30','gtd'=>'R$ 20.000','stack'=>'8.000','blinds'=>'50/100','late'=>'10 min'],
-  ['nome'=>'Milionario GTD','tipo'=>'Texas Holdem','inicio'=>'16:00','buyin'=>'R$ 250','gtd'=>'R$ 1.000.000','stack'=>'50.000','blinds'=>'500/1.000','late'=>'60 min'],
-  ['nome'=>'Nightly KO','tipo'=>'Texas Holdem','inicio'=>'19:00','buyin'=>'R$ 80','gtd'=>'R$ 75.000','stack'=>'15.000','blinds'=>'150/300','late'=>'20 min'],
-  ['nome'=>'Sunday Special','tipo'=>'Texas Holdem','inicio'=>'20:00','buyin'=>'R$ 200','gtd'=>'R$ 500.000','stack'=>'30.000','blinds'=>'300/600','late'=>'45 min']
-];
+$tournament_names = ['Daily Millions','Deep Stack Turbo','Omaha Hi/Lo','Milionario GTD','Nightly KO','Sunday Special','PKO Bounty','Freeroll','High Roller','Speed Poker','Bounty Builder','Marathon','Turbo KO','Twilight Series','Saturday Special','Heads Up','6-Max Turbo','Deep Run','Progressive KO','Lucky 7s','The Warm Up','The Eliminator','Mega Stack','Mini Millions','Grand Prix','Last Chance','Early Bird','Night Owl','The Rebuy','The Freezeout','Big Stack','Short Deck','All-In or Fold','Zoom Poker','Hyper Turbo','Satellite','Double Chance','Triple Threat','Final Table','The Grind','Morning Session','Afternoon Delight','Late Night','Weekend Warrior','Monster Stack','King of the Hill','The Challenge','The Final','The Main Event','The Wrap Up'];
+$tipos = ['Texas Holdem','Texas Holdem','Omaha','Texas Holdem','Texas Holdem','Texas Holdem','Texas Holdem','Texas Holdem','Texas Holdem','Omaha'];
+$buyins = [50,100,30,250,80,200,60,0,500,150,40,120,70,90,300,25,175,55,35,45,65,85,110,130,220,15,180,95,75,140,160,20,10,5,1000,25,50,75,150,200,40,60,80,100,250,30,45,55,70,90];
+$gtds = ['50.000','100.000','20.000','1.000.000','75.000','500.000','40.000','5.000','2.000.000','150.000','30.000','200.000','60.000','80.000','350.000','15.000','120.000','45.000','25.000','35.000','55.000','70.000','90.000','110.000','180.000','10.000','140.000','85.000','65.000','250.000','130.000','12.000','8.000','4.000','3.000.000','20.000','40.000','60.000','250.000','100.000','35.000','50.000','70.000','90.000','200.000','25.000','38.000','42.000','55.000','2.500'];
+
+$all_tournaments = [];
+for ($i = 0; $i < 50; $i++) {
+  $h = sprintf('%02d', rand(8, 23)) . ':' . sprintf('%02d', rand(0, 3) * 15);
+  $all_tournaments[] = [
+    'nome' => $tournament_names[$i],
+    'tipo' => $tipos[$i % count($tipos)],
+    'inicio' => $h,
+    'buyin' => $buyins[$i] == 0 ? 'Grátis' : 'R$ ' . number_format($buyins[$i], 0, ',', '.'),
+    'gtd' => 'R$ ' . $gtds[$i],
+    'stack' => number_format(($buyins[$i] ?: 50) * rand(80, 200), 0, ',', '.'),
+    'blinds' => '100/200',
+    'late' => rand(5, 60) . ' min'
+  ];
+}
 
 get_header('blank');
 ?>
