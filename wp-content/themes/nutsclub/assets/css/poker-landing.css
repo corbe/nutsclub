@@ -30,6 +30,7 @@ html {
   --lp-radius-sm: 8px;
   --lp-radius: 12px;
   --lp-radius-lg: 20px;
+  --container: 1440px;
   --lp-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
