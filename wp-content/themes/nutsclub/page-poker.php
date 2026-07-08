@@ -25,9 +25,7 @@ $t['pt']['cta']           = 'Jogar Agora';
 $t['en']['cta']           = 'Play Now';
 $t['es']['cta']           = 'Juega Ahora';
 
-$t['pt']['login']         = 'Log In';
-$t['en']['login']         = 'Log In';
-$t['es']['login']         = 'Iniciar Sesión';
+
 
 $t['pt']['urgency_label'] = 'AO VIVO';
 $t['en']['urgency_label'] = 'LIVE NOW';
@@ -241,7 +239,6 @@ get_header('blank');
             <svg width="22" height="16" viewBox="0 0 22 16" aria-hidden="true"><rect width="22" height="16" fill="#C60B1E"/><rect y="3" width="22" height="10" fill="#FFC400"/></svg>
           </a>
         </div>
-        <a href="<?php echo esc_url($poker_url); ?>" class="lp-header__login" rel="nofollow"><?php echo __t('login'); ?></a>
       </div>
     </div>
   </header>
