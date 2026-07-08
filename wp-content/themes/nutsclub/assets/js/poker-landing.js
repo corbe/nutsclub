@@ -102,4 +102,46 @@
       e.stopPropagation();
     });
   }
+
+  // === CAROUSEL (torneios) ===
+  const track = document.querySelector('.trn-carousel__track');
+  const dots = document.querySelectorAll('.trn-carousel__dot');
+
+  if (track && dots.length) {
+    let current = 0;
+    const total = dots.length;
+    let interval;
+
+    function goToSlide(index) {
+      if (index < 0) index = total - 1;
+      if (index >= total) index = 0;
+      current = index;
+      track.style.transform = 'translateX(-' + (current * 100) + '%)';
+      dots.forEach((d, i) => {
+        d.classList.toggle('trn-carousel__dot--active', i === current);
+      });
+    }
+
+    dots.forEach((dot) => {
+      dot.addEventListener('click', () => {
+        goToSlide(parseInt(dot.getAttribute('data-slide')));
+        resetInterval();
+      });
+    });
+
+    function resetInterval() {
+      clearInterval(interval);
+      interval = setInterval(() => goToSlide(current + 1), 5000);
+    }
+
+    goToSlide(0);
+    resetInterval();
+
+    // Pause on hover
+    const carousel = document.querySelector('.trn-carousel');
+    if (carousel) {
+      carousel.addEventListener('mouseenter', () => clearInterval(interval));
+      carousel.addEventListener('mouseleave', resetInterval);
+    }
+  }
 })();
