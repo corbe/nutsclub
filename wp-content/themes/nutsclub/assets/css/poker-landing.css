@@ -919,14 +919,14 @@ a {
   position: absolute;
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 900;
-  font-size: clamp(220px, 20vw, 300px);
+  font-size: clamp(160px, 16vw, 240px);
   color: rgba(255,255,255,0.08);
   white-space: nowrap;
   user-select: none;
   pointer-events: none;
   letter-spacing: -0.06em;
-  transform: translateX(-50%) scaleX(1.4);
-  top: 60px;
+  transform: translateX(-50%) scaleX(1.6);
+  top: 45px;
   left: 50%;
   transform: translateX(-50%);
   width: 95%;
