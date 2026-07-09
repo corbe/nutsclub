@@ -206,8 +206,8 @@
       });
 
       track.addEventListener('touchmove', (e) => {
-        if (!isDown) return;
         e.preventDefault();
+        if (!isDown) return;
         const diff = e.touches[0].clientX - startX;
         if (Math.abs(diff) > 40) {
           isDown = false;

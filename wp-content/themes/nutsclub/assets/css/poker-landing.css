@@ -946,6 +946,7 @@ a {
   margin: 240px auto 0;
   padding: 0 20px;
   min-height: 400px;
+  touch-action: none;
 }
 
 .trn-hero__carousel-cards {
@@ -1196,13 +1197,13 @@ a {
 }
 
 @media (max-width: 600px) {
+  .trn-hero__card { width: calc(100vw - 60px); max-width: 360px; }
   .trn-hero__card--side { display: none; }
   .trn-hero__card--center { transform: none; }
-  .trn-hero__card { max-width: 88vw; }
 }
 
 @media (max-width: 480px) {
-  .trn-hero__card { width: 88vw; max-width: 280px; height: 200px; }
+  .trn-hero__card { width: calc(100vw - 60px); max-width: 280px; height: 200px; }
   .trn-hero__card--center .trn-hero__card-prize { font-size: 38px; }
   .trn-hero__card--center .trn-hero__card-game { font-size: 16px; }
   .trn-hero__card-top { font-size: 10px; }
