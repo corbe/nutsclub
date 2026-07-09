@@ -141,12 +141,13 @@
       }
 
       if (mob) {
-        cards.forEach((c) => { c.style.transition = 'none'; });
-        void document.body.offsetHeight;
+        const inAnim = dir === 1 ? 'slideInRight' : 'slideInLeft';
+        const outAnim = dir === 1 ? 'slideOutLeft' : 'slideOutRight';
 
         cards.forEach((card, i) => {
           card.classList.remove('trn-hero__card--center', 'trn-hero__card--side', 'trn-hero__card--hidden');
           card.style.pointerEvents = 'none';
+          card.style.animation = 'none';
           card.style.order = '';
 
           if (i === index) {
@@ -166,19 +167,18 @@
 
         void document.body.offsetHeight;
 
-        requestAnimationFrame(() => {
-          cards.forEach((card, i) => {
-            if (i === index) {
-              card.style.transition = 'transform 0.4s cubic-bezier(0.16,1,0.3,1), opacity 0.4s ease';
-              card.style.transform = 'translateX(0)';
-              setTimeout(() => { card.style.pointerEvents = 'auto'; }, 400);
-            } else if (i === prev) {
-              card.style.transition = 'transform 0.4s cubic-bezier(0.16,1,0.3,1), opacity 0.4s ease';
-              card.style.transform = dir === 1 ? 'translateX(-120%)' : 'translateX(120%)';
-              card.style.opacity = '0';
-            }
-          });
+        cards.forEach((card, i) => {
+          if (i === index) {
+            card.style.animation = inAnim + ' 0.35s cubic-bezier(0.16,1,0.3,1) forwards';
+          } else if (i === prev) {
+            card.style.animation = outAnim + ' 0.35s cubic-bezier(0.16,1,0.3,1) forwards';
+          }
         });
+
+        setTimeout(() => {
+          cards.forEach((c) => { c.style.animation = ''; });
+          resetCarouselStyle();
+        }, 380);
       } else {
         const visible = getVisibleIndices(index);
         const orderMap = {};
@@ -351,7 +351,7 @@
         isMobile = true;
 
         if (isMobileWidth()) {
-          cards.forEach((c) => { c.style.transition = 'none'; });
+          cards.forEach((c) => { c.style.animation = 'none'; c.style.transition = 'none'; });
         }
       });
 
@@ -362,7 +362,8 @@
         const diff = x - startX;
 
         if (isMobileWidth()) {
-          const pct = (diff / track.offsetWidth) * 100;
+          const cardW = cards[0].offsetWidth || track.offsetWidth;
+          const pct = (diff / cardW) * 100;
           const visible = getVisibleIndices(current);
 
           cards.forEach((card, i) => {
