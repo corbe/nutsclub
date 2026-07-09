@@ -44,8 +44,9 @@ get_header('blank');
 
   <div class="trn-hero__carousel" id="hero-carousel">
     <div class="trn-hero__carousel-cards">
+    <?php $initial_center = floor(count($highlights) / 2); ?>
     <?php foreach ($highlights as $i => $h): ?>
-    <div class="trn-hero__card <?php echo $i === 1 ? 'trn-hero__card--center' : 'trn-hero__card--side'; ?>" data-index="<?php echo $i; ?>">
+    <div class="trn-hero__card <?php echo $i === $initial_center ? 'trn-hero__card--center' : 'trn-hero__card--side'; ?>" data-index="<?php echo $i; ?>">
       <div class="trn-hero__card-inner">
         <div class="trn-hero__card-top"><?php echo esc_html($h['title']); ?></div>
         <div class="trn-hero__card-prize"><?php echo esc_html($h['prize']); ?></div>

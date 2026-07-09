@@ -166,16 +166,18 @@
 
         void document.body.offsetHeight;
 
-        cards.forEach((card, i) => {
-          if (i === index) {
-            card.style.transition = 'transform 0.35s cubic-bezier(0.16,1,0.3,1), opacity 0.35s ease';
-            card.style.transform = 'translateX(0)';
-            setTimeout(() => { card.style.pointerEvents = 'auto'; }, 350);
-          } else if (i === prev) {
-            card.style.transition = 'transform 0.35s cubic-bezier(0.16,1,0.3,1), opacity 0.35s ease';
-            card.style.transform = dir === 1 ? 'translateX(-120%)' : 'translateX(120%)';
-            card.style.opacity = '0';
-          }
+        requestAnimationFrame(() => {
+          cards.forEach((card, i) => {
+            if (i === index) {
+              card.style.transition = 'transform 0.4s cubic-bezier(0.16,1,0.3,1), opacity 0.4s ease';
+              card.style.transform = 'translateX(0)';
+              setTimeout(() => { card.style.pointerEvents = 'auto'; }, 400);
+            } else if (i === prev) {
+              card.style.transition = 'transform 0.4s cubic-bezier(0.16,1,0.3,1), opacity 0.4s ease';
+              card.style.transform = dir === 1 ? 'translateX(-120%)' : 'translateX(120%)';
+              card.style.opacity = '0';
+            }
+          });
         });
       } else {
         const visible = getVisibleIndices(index);
@@ -269,7 +271,7 @@
       }
     }
 
-    slideTo(current, 0);
+    resetCarouselStyle();
 
     dots.forEach((dot) => {
       dot.addEventListener('click', () => {
