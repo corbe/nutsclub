@@ -111,6 +111,11 @@
     let current = Math.floor(cards.length / 2);
     const total = cards.length;
     let interval;
+    let isMobile = false;
+
+    function isMobileWidth() {
+      return window.innerWidth <= 600;
+    }
 
     function getVisibleIndices(center) {
       const prev = center - 1 < 0 ? total - 1 : center - 1;
@@ -118,48 +123,162 @@
       return [prev, center, next];
     }
 
-    function goToSlide(index) {
+    function isForward(from, to) {
+      const diff = (to - from + total) % total;
+      return diff <= Math.floor(total / 2);
+    }
+
+    function slideTo(index, dir) {
       if (index < 0) index = total - 1;
       if (index >= total) index = 0;
-      current = index;
-      const visible = getVisibleIndices(current);
+      if (index === current) return;
 
-      // Reorder: prev, center, next → order 0, 1, 2
-      const orderMap = {};
-      orderMap[visible[0]] = 0;
-      orderMap[visible[1]] = 1;
-      orderMap[visible[2]] = 2;
+      const prev = current;
+      const mob = isMobileWidth();
 
-      cards.forEach((card, i) => {
-        card.classList.remove('trn-hero__card--center', 'trn-hero__card--side', 'trn-hero__card--hidden');
+      if (dir === undefined || dir === 0) {
+        dir = isForward(prev, index) ? 1 : -1;
+      }
 
-        if (i === current) {
-          card.classList.add('trn-hero__card--center');
-          card.style.display = '';
-          card.style.order = orderMap[i] ?? 1;
-        } else if (visible.includes(i)) {
-          card.classList.add('trn-hero__card--side');
-          card.style.display = '';
-          card.style.order = orderMap[i] ?? 0;
-        } else {
-          card.classList.add('trn-hero__card--hidden');
-          card.style.display = 'none';
+      if (mob) {
+        cards.forEach((c) => { c.style.transition = 'none'; });
+        void document.body.offsetHeight;
+
+        cards.forEach((card, i) => {
+          card.classList.remove('trn-hero__card--center', 'trn-hero__card--side', 'trn-hero__card--hidden');
+          card.style.pointerEvents = 'none';
           card.style.order = '';
-        }
-      });
+
+          if (i === index) {
+            card.style.transform = dir === 1 ? 'translateX(120%)' : 'translateX(-120%)';
+            card.style.opacity = '1';
+            card.style.display = '';
+            card.classList.add('trn-hero__card--center');
+          } else if (i === prev) {
+            card.style.transform = 'translateX(0)';
+            card.style.opacity = '1';
+            card.style.display = '';
+          } else {
+            card.style.display = 'none';
+            card.classList.add('trn-hero__card--hidden');
+          }
+        });
+
+        void document.body.offsetHeight;
+
+        cards.forEach((card, i) => {
+          if (i === index) {
+            card.style.transition = 'transform 0.35s cubic-bezier(0.16,1,0.3,1), opacity 0.35s ease';
+            card.style.transform = 'translateX(0)';
+            setTimeout(() => { card.style.pointerEvents = 'auto'; }, 350);
+          } else if (i === prev) {
+            card.style.transition = 'transform 0.35s cubic-bezier(0.16,1,0.3,1), opacity 0.35s ease';
+            card.style.transform = dir === 1 ? 'translateX(-120%)' : 'translateX(120%)';
+            card.style.opacity = '0';
+          }
+        });
+      } else {
+        const visible = getVisibleIndices(index);
+        const orderMap = {};
+        orderMap[visible[0]] = 0;
+        orderMap[visible[1]] = 1;
+        orderMap[visible[2]] = 2;
+
+        cards.forEach((card, i) => {
+          card.classList.remove('trn-hero__card--center', 'trn-hero__card--side', 'trn-hero__card--hidden');
+          card.style.transform = '';
+          card.style.opacity = '';
+          card.style.transition = '';
+          card.style.pointerEvents = '';
+
+          if (i === index) {
+            card.classList.add('trn-hero__card--center');
+            card.style.display = '';
+            card.style.order = orderMap[i] ?? 1;
+          } else if (visible.includes(i)) {
+            card.classList.add('trn-hero__card--side');
+            card.style.display = '';
+            card.style.order = orderMap[i] ?? 0;
+          } else {
+            card.classList.add('trn-hero__card--hidden');
+            card.style.display = 'none';
+            card.style.order = '';
+          }
+        });
+      }
+
+      current = index;
 
       dots.forEach((d, i) => {
         d.classList.toggle('trn-hero__dot--active', i === current);
       });
     }
 
-    goToSlide(current);
+    function resetCarouselStyle() {
+      const visible = getVisibleIndices(current);
+      const mob = isMobileWidth();
+
+      cards.forEach((c) => { c.style.transition = ''; });
+
+      if (mob) {
+        cards.forEach((card, i) => {
+          card.classList.remove('trn-hero__card--center', 'trn-hero__card--side', 'trn-hero__card--hidden');
+          card.style.pointerEvents = 'none';
+
+          if (i === current) {
+            card.style.transform = 'translateX(0)';
+            card.style.opacity = '1';
+            card.style.display = '';
+            card.classList.add('trn-hero__card--center');
+            card.style.pointerEvents = 'auto';
+          } else if (visible.includes(i)) {
+            card.style.transform = i === visible[0] ? 'translateX(-120%)' : 'translateX(120%)';
+            card.style.opacity = '0';
+            card.style.display = '';
+          } else {
+            card.style.transform = '';
+            card.style.display = 'none';
+            card.classList.add('trn-hero__card--hidden');
+          }
+        });
+      } else {
+        const orderMap = {};
+        orderMap[visible[0]] = 0;
+        orderMap[visible[1]] = 1;
+        orderMap[visible[2]] = 2;
+
+        cards.forEach((card, i) => {
+          card.classList.remove('trn-hero__card--center', 'trn-hero__card--side', 'trn-hero__card--hidden');
+          card.style.transform = '';
+          card.style.opacity = '';
+
+          if (i === current) {
+            card.classList.add('trn-hero__card--center');
+            card.style.display = '';
+            card.style.order = orderMap[i] ?? 1;
+          } else if (visible.includes(i)) {
+            card.classList.add('trn-hero__card--side');
+            card.style.display = '';
+            card.style.order = orderMap[i] ?? 0;
+          } else {
+            card.classList.add('trn-hero__card--hidden');
+            card.style.display = 'none';
+            card.style.order = '';
+          }
+        });
+      }
+    }
+
+    slideTo(current, 0);
 
     dots.forEach((dot) => {
       dot.addEventListener('click', () => {
-        goToSlide(parseInt(dot.getAttribute('data-slide')));
-        clearInterval(interval);
-        startRotation();
+        const idx = parseInt(dot.getAttribute('data-slide'));
+        if (idx !== current) {
+          slideTo(idx);
+          clearInterval(interval);
+          startRotation();
+        }
       });
     });
 
@@ -167,18 +286,41 @@
       card.addEventListener('click', function () {
         const idx = parseInt(this.getAttribute('data-index'));
         if (idx !== current) {
-          goToSlide(idx);
+          slideTo(idx);
           clearInterval(interval);
           startRotation();
         }
       });
     });
 
-    // Drag
+    // Drag & Touch
     const track = document.querySelector('.trn-hero__carousel');
     if (track) {
-      let isDown = false;
       let startX = 0;
+      let isDown = false;
+
+      function dragEnd(clientX) {
+        if (!isDown) return;
+        const diff = clientX - startX;
+        isDown = false;
+
+        if (isMobileWidth()) {
+          const threshold = track.offsetWidth * 0.2;
+          if (Math.abs(diff) > threshold) {
+            slideTo(diff < 0 ? current + 1 : current - 1, diff < 0 ? 1 : -1);
+            clearInterval(interval);
+            startRotation();
+          } else {
+            resetCarouselStyle();
+          }
+        } else {
+          if (Math.abs(diff) > 40) {
+            slideTo(diff < 0 ? current + 1 : current - 1);
+            clearInterval(interval);
+            startRotation();
+          }
+        }
+      }
 
       track.addEventListener('mousedown', (e) => {
         isDown = true;
@@ -187,46 +329,84 @@
 
       track.addEventListener('mousemove', (e) => {
         if (!isDown) return;
-        const diff = e.clientX - startX;
-        if (Math.abs(diff) > 40) {
-          isDown = false;
-          goToSlide(diff < 0 ? current + 1 : current - 1);
-          clearInterval(interval);
-          startRotation();
+        if (!isMobileWidth()) {
+          const diff = e.clientX - startX;
+          if (Math.abs(diff) > 40) {
+            isDown = false;
+            slideTo(diff < 0 ? current + 1 : current - 1);
+            clearInterval(interval);
+            startRotation();
+          }
         }
       });
 
-      track.addEventListener('mouseup', () => { isDown = false; });
+      track.addEventListener('mouseup', (e) => dragEnd(e.clientX));
       track.addEventListener('mouseleave', () => { isDown = false; });
 
-      // Touch events for mobile swipe
       track.addEventListener('touchstart', (e) => {
         isDown = true;
         startX = e.touches[0].clientX;
+        isMobile = true;
+
+        if (isMobileWidth()) {
+          cards.forEach((c) => { c.style.transition = 'none'; });
+        }
       });
 
       track.addEventListener('touchmove', (e) => {
         e.preventDefault();
         if (!isDown) return;
-        const diff = e.touches[0].clientX - startX;
-        if (Math.abs(diff) > 40) {
+        const x = e.touches[0].clientX;
+        const diff = x - startX;
+
+        if (isMobileWidth()) {
+          const pct = (diff / track.offsetWidth) * 100;
+          const visible = getVisibleIndices(current);
+
+          cards.forEach((card, i) => {
+            if (i === current) {
+              card.style.transform = `translateX(${pct}%)`;
+              card.style.opacity = '1';
+              card.style.display = '';
+              card.classList.add('trn-hero__card--center');
+            } else if (i === visible[2] && diff < 0) {
+              card.style.transform = `translateX(${100 + pct}%)`;
+              card.style.opacity = '1';
+              card.style.display = '';
+            } else if (i === visible[0] && diff > 0) {
+              card.style.transform = `translateX(${-100 + pct}%)`;
+              card.style.opacity = '1';
+              card.style.display = '';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        } else if (Math.abs(diff) > 40) {
           isDown = false;
-          goToSlide(diff < 0 ? current + 1 : current - 1);
+          slideTo(diff < 0 ? current + 1 : current - 1);
           clearInterval(interval);
           startRotation();
         }
       }, { passive: false });
 
-      track.addEventListener('touchend', () => { isDown = false; });
+      track.addEventListener('touchend', (e) => dragEnd(e.changedTouches[0].clientX));
       track.addEventListener('touchcancel', () => { isDown = false; });
     }
 
     function startRotation() {
       clearInterval(interval);
-      interval = setInterval(() => goToSlide((current + 1) % total), 3500);
+      interval = setInterval(() => slideTo((current + 1) % total, 1), 3500);
     }
 
     startRotation();
+
+    window.addEventListener('resize', () => {
+      const mob = isMobileWidth();
+      if (mob !== isMobile) {
+        isMobile = mob;
+        resetCarouselStyle();
+      }
+    });
   }
 
   // === TABLE PAGINATION ===
