@@ -198,6 +198,27 @@
 
       track.addEventListener('mouseup', () => { isDown = false; });
       track.addEventListener('mouseleave', () => { isDown = false; });
+
+      // Touch events for mobile swipe
+      track.addEventListener('touchstart', (e) => {
+        isDown = true;
+        startX = e.touches[0].clientX;
+      });
+
+      track.addEventListener('touchmove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const diff = e.touches[0].clientX - startX;
+        if (Math.abs(diff) > 40) {
+          isDown = false;
+          goToSlide(diff < 0 ? current + 1 : current - 1);
+          clearInterval(interval);
+          startRotation();
+        }
+      }, { passive: false });
+
+      track.addEventListener('touchend', () => { isDown = false; });
+      track.addEventListener('touchcancel', () => { isDown = false; });
     }
 
     function startRotation() {
