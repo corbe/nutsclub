@@ -440,4 +440,9 @@
 
     showPage(1);
   }
+
+  // === LUCIde ICONS ===
+  if (window.lucide) {
+    lucide.createIcons();
+  }
 })();

@@ -1,0 +1,167 @@
+{
+    "fetched_at": "2026-07-14 12:44:49",
+    "highlights": [
+        {
+            "title": "#AS Battle HR+SPS",
+            "prize": "201.500",
+            "game": "NLH",
+            "time": "22:00",
+            "buyin": "R$ 300",
+            "stack": "80.000",
+            "late": "200 min",
+            "blinds": "100\/200"
+        },
+        {
+            "title": "#AS Big Plus+SPT",
+            "prize": "158.500",
+            "game": "NLH",
+            "time": "21:00",
+            "buyin": "R$ 150",
+            "stack": "50.000",
+            "late": "200 min",
+            "blinds": "100\/200"
+        },
+        {
+            "title": "HighS",
+            "prize": "125.000",
+            "game": "NLH",
+            "time": "22:00",
+            "buyin": "R$ 1.100",
+            "stack": "50.000",
+            "late": "200 min",
+            "blinds": "100\/200"
+        },
+        {
+            "title": "#AS Plus+SPT",
+            "prize": "108.500",
+            "game": "NLH",
+            "time": "21:00",
+            "buyin": "R$ 30",
+            "stack": "50.000",
+            "late": "160 min",
+            "blinds": "100\/200"
+        },
+        {
+            "title": "#AS Mystery+SPS",
+            "prize": "81.000",
+            "game": "NLH",
+            "time": "22:00",
+            "buyin": "R$ 75",
+            "stack": "50.000",
+            "late": "200 min",
+            "blinds": "100\/200"
+        },
+        {
+            "title": "#AS OmaX HR",
+            "prize": "70.000",
+            "game": "PLO5",
+            "time": "23:00",
+            "buyin": "R$ 500",
+            "stack": "50.000",
+            "late": "200 min",
+            "blinds": "100\/200"
+        }
+    ],
+    "tournaments": [
+        {
+            "nome": "#AS Battle HR+SPS",
+            "tipo": "Texas Holdem",
+            "inicio": "22:00",
+            "buyin": "R$ 300",
+            "gtd": "R$ 201.500",
+            "stack": "80.000",
+            "blinds": "100\/200",
+            "late": "200 min"
+        },
+        {
+            "nome": "#AS Big Plus+SPT",
+            "tipo": "Texas Holdem",
+            "inicio": "21:00",
+            "buyin": "R$ 150",
+            "gtd": "R$ 158.500",
+            "stack": "50.000",
+            "blinds": "100\/200",
+            "late": "200 min"
+        },
+        {
+            "nome": "HighS",
+            "tipo": "Texas Holdem",
+            "inicio": "22:00",
+            "buyin": "R$ 1.100",
+            "gtd": "R$ 125.000",
+            "stack": "50.000",
+            "blinds": "100\/200",
+            "late": "200 min"
+        },
+        {
+            "nome": "#AS Plus+SPT",
+            "tipo": "Texas Holdem",
+            "inicio": "21:00",
+            "buyin": "R$ 30",
+            "gtd": "R$ 108.500",
+            "stack": "50.000",
+            "blinds": "100\/200",
+            "late": "160 min"
+        },
+        {
+            "nome": "#AS Mystery+SPS",
+            "tipo": "Texas Holdem",
+            "inicio": "22:00",
+            "buyin": "R$ 75",
+            "gtd": "R$ 81.000",
+            "stack": "50.000",
+            "blinds": "100\/200",
+            "late": "200 min"
+        },
+        {
+            "nome": "#AS OmaX HR",
+            "tipo": "Omaha",
+            "inicio": "23:00",
+            "buyin": "R$ 500",
+            "gtd": "R$ 70.000",
+            "stack": "50.000",
+            "blinds": "100\/200",
+            "late": "200 min"
+        },
+        {
+            "nome": "#AS Plus HR+SPS",
+            "tipo": "Texas Holdem",
+            "inicio": "18:00",
+            "buyin": "R$ 75",
+            "gtd": "R$ 41.000",
+            "stack": "20.000",
+            "blinds": "100\/200",
+            "late": "154 min"
+        },
+        {
+            "nome": "#AS Plus+SPS",
+            "tipo": "Texas Holdem",
+            "inicio": "14:00",
+            "buyin": "R$ 35",
+            "gtd": "R$ 31.000",
+            "stack": "50.000",
+            "blinds": "100\/200",
+            "late": "150 min"
+        },
+        {
+            "nome": "#AS Bounty",
+            "tipo": "Texas Holdem",
+            "inicio": "00:00",
+            "buyin": "R$ 110",
+            "gtd": "R$ 30.000",
+            "stack": "50.000",
+            "blinds": "100\/200",
+            "late": "160 min"
+        },
+        {
+            "nome": "#AS WarmUp",
+            "tipo": "Texas Holdem",
+            "inicio": "17:00",
+            "buyin": "R$ 110",
+            "gtd": "R$ 25.000",
+            "stack": "50.000",
+            "blinds": "100\/200",
+            "late": "200 min"
+        }
+    ]
+}

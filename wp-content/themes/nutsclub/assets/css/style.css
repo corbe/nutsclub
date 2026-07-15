@@ -1,15 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Poppins:wght@600;700;800;900&family=JetBrains+Mono:wght@600;700&display=swap');
+
 :root {
-    --color-bg: #0d1117;
-    --color-surface: #161b22;
-    --color-surface-2: #21262d;
-    --color-primary: #2ea043;
-    --color-primary-hover: #238636;
-    --color-accent: #e8b830;
-    --color-gold: #d4a853;
-    --color-text: #f0f0f0;
-    --color-text-muted: #8b949e;
-    --color-border: #30363d;
+    --color-bg: #0a0a0f;
+    --color-surface: #1a1a2e;
+    --color-surface-2: #24243a;
+    --color-primary: #00e676;
+    --color-primary-hover: #00c853;
+    --color-accent: #f5a623;
+    --color-gold: #f5a623;
+    --color-text: #f5f5f7;
+    --color-text-muted: #a0a0b8;
+    --color-border: #2a2a40;
+    --color-danger: #ff3b5c;
+    --font-family-heading: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-family-mono: 'JetBrains Mono', monospace;
     --container: 1200px;
     --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -113,8 +118,9 @@ a {
 }
 
 .section__title {
+    font-family: var(--font-family-heading);
     font-size: 40px;
-    font-weight: 900;
+    font-weight: 800;
     text-transform: uppercase;
     letter-spacing: -1px;
 }
@@ -164,8 +170,9 @@ a {
 }
 
 .header__logo-text {
+    font-family: var(--font-family-heading);
     font-size: 22px;
-    font-weight: 900;
+    font-weight: 800;
     letter-spacing: 4px;
     color: var(--color-primary);
 }
@@ -280,8 +287,9 @@ a {
 }
 
 .hero__title {
+    font-family: var(--font-family-heading);
     font-size: clamp(48px, 10vw, 120px);
-    font-weight: 900;
+    font-weight: 800;
     letter-spacing: 12px;
     text-transform: uppercase;
     line-height: 1;
@@ -443,6 +451,7 @@ a {
 }
 
 .tournament-card__title {
+    font-family: var(--font-family-heading);
     font-size: 18px;
     font-weight: 700;
     margin-bottom: 8px;
@@ -507,6 +516,7 @@ a {
 }
 
 .features__item h4 {
+    font-family: var(--font-family-heading);
     font-size: 16px;
     font-weight: 700;
     margin-bottom: 8px;
@@ -533,8 +543,9 @@ a {
 }
 
 .contact__title {
+    font-family: var(--font-family-heading);
     font-size: 36px;
-    font-weight: 900;
+    font-weight: 800;
     text-transform: uppercase;
     margin-bottom: 16px;
 }
@@ -564,8 +575,9 @@ a {
 }
 
 .page-title {
+    font-family: var(--font-family-heading);
     font-size: 32px;
-    font-weight: 900;
+    font-weight: 800;
     text-transform: uppercase;
     letter-spacing: -1px;
     margin-bottom: 32px;
@@ -622,8 +634,9 @@ a {
 }
 
 .footer__brand h3 {
+    font-family: var(--font-family-heading);
     font-size: 20px;
-    font-weight: 900;
+    font-weight: 800;
     letter-spacing: 4px;
     color: var(--color-primary);
     margin-bottom: 8px;

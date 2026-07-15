@@ -32,7 +32,7 @@
                     'fallback_cb' => false,
                 ]);
                 ?>
-                <a href="<?php echo esc_url(get_theme_mod('contact_whatsapp', '#')); ?>" class="btn btn--primary header__cta">Jogue Agora</a>
+                <a href="<?php echo esc_url(get_theme_mod('contact_whatsapp', 'https://api.whatsapp.com/send?phone=5511944601642')); ?>" class="btn btn--primary header__cta">Jogue Agora</a>
             </nav>
         </div>
     </div>

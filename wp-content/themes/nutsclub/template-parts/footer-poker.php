@@ -19,6 +19,7 @@
         <a href="#" class="lp-footer__link" data-modal="jogo-responsavel"><?php echo __t('footer_jogo'); ?></a>
         <a href="#" class="lp-footer__link" data-modal="contato"><?php echo __t('footer_contato'); ?></a>
       </nav>
+
       <p class="lp-footer__copy">&copy; <?php echo date('Y'); ?> Nuts Poker. <?php echo __t('footer_copy'); ?></p>
       <p class="lp-footer__warning"><?php echo __t('footer_warn'); ?></p>
     </div>

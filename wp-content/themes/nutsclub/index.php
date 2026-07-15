@@ -8,7 +8,7 @@
             <h1 class="hero__title"><span>NUTS</span> POKER</h1>
             <p class="hero__subtitle"><?php echo esc_html(get_theme_mod('hero_subtitle', 'Sua mesa de poker online')); ?></p>
             <div class="hero__actions">
-                <a href="<?php echo esc_url(get_theme_mod('contact_whatsapp', '#')); ?>" class="btn btn--primary">Criar Conta</a>
+                <a href="<?php echo esc_url(get_theme_mod('contact_whatsapp', 'https://api.whatsapp.com/send?phone=5511944601642')); ?>" class="btn btn--primary">Criar Conta</a>
                 <a href="#about" class="btn btn--outline">Saiba Mais</a>
             </div>
         </div>
@@ -50,7 +50,7 @@
         <div class="container">
             <div class="section__header">
                 <span class="section__tag">Torneios</span>
-                <h2 class="section__title">Próximos Torneios</h2>
+                <h2 class="section__title">Torneios Diários</h2>
             </div>
             <div class="tournaments__grid">
                 <?php
@@ -75,8 +75,9 @@
                             </div>
                         </article>
                     <?php endwhile;
-                    wp_reset_postdata();
-                else : ?>
+                    wp_reset_postdata(); ?>
+                    <a href="/torneios/" class="btn btn--accent" style="display:inline-block;margin-top:32px">Ver Todos os Torneios</a>
+                <?php else : ?>
                     <p class="tournaments__empty">Em breve novos torneios serão anunciados. Fique ligado!</p>
                 <?php endif; ?>
             </div>
@@ -120,7 +121,7 @@
                 <h2 class="contact__title">Entre para o Jogo</h2>
                 <p>Crie sua conta e receba fichas grátis para começar a jogar agora mesmo.</p>
                 <div class="contact__actions">
-                    <a href="<?php echo esc_url(get_theme_mod('contact_whatsapp', '#')); ?>" class="btn btn--accent">Criar Conta Grátis</a>
+                    <a href="<?php echo esc_url(get_theme_mod('contact_whatsapp', 'https://api.whatsapp.com/send?phone=5511944601642')); ?>" class="btn btn--accent">Criar Conta Grátis</a>
                     <a href="<?php echo esc_url(get_theme_mod('contact_instagram', 'https://www.instagram.com/nutsclub_')); ?>" target="_blank" class="btn btn--outline">Siga no Instagram</a>
                 </div>
                 <?php if (get_theme_mod('contact_address')) : ?>

@@ -10,6 +10,7 @@ services:
       MYSQL_PASSWORD: wppass
     ports:
       - "3307:3306"
+    command: --innodb_buffer_pool_size=256M
     volumes:
       - mysql_data:/var/lib/mysql
     healthcheck:

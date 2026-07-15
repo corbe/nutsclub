@@ -6,34 +6,53 @@ get_template_part('template-parts/translation');
 $is_torneios = true;
 $poker_url   = get_field('poker_url') ?: '#';
 
-// Mock JSON
-$highlights = [
-  ['title'=>'#AS OmaX HR','prize'=>'80K','game'=>'PLO5','time'=>'08:00 PM','buyin'=>'R$ 100','stack'=>'25.000','late'=>'30 min','blinds'=>'200/400'],
-  ['title'=>'#MS NLH Turbo','prize'=>'200K','game'=>'NLH','time'=>'09:00 PM','buyin'=>'R$ 250','stack'=>'50.000','late'=>'45 min','blinds'=>'500/1K'],
-  ['title'=>'#PKO Bounty','prize'=>'120K','game'=>'PKO','time'=>'10:00 PM','buyin'=>'R$ 80','stack'=>'15.000','late'=>'20 min','blinds'=>'150/300'],
-  ['title'=>'#Sun Milionario','prize'=>'500K','game'=>'NLH','time'=>'11:00 PM','buyin'=>'R$ 500','stack'=>'100.000','late'=>'60 min','blinds'=>'1K/2K'],
-  ['title'=>'#Omaha Hi-Lo','prize'=>'60K','game'=>'PLO','time'=>'12:00 AM','buyin'=>'R$ 60','stack'=>'12.000','late'=>'15 min','blinds'=>'120/240'],
-  ['title'=>'#Turbo KO','prize'=>'40K','game'=>'PKO','time'=>'01:00 AM','buyin'=>'R$ 40','stack'=>'8.000','late'=>'10 min','blinds'=>'80/160']
-];
-
-$tournament_names = ['Daily Millions','Deep Stack Turbo','Omaha Hi/Lo','Milionario GTD','Nightly KO','Sunday Special','PKO Bounty','Freeroll','High Roller','Speed Poker','Bounty Builder','Marathon','Turbo KO','Twilight Series','Saturday Special','Heads Up','6-Max Turbo','Deep Run','Progressive KO','Lucky 7s','The Warm Up','The Eliminator','Mega Stack','Mini Millions','Grand Prix','Last Chance','Early Bird','Night Owl','The Rebuy','The Freezeout','Big Stack','Short Deck','All-In or Fold','Zoom Poker','Hyper Turbo','Satellite','Double Chance','Triple Threat','Final Table','The Grind','Morning Session','Afternoon Delight','Late Night','Weekend Warrior','Monster Stack','King of the Hill','The Challenge','The Final','The Main Event','The Wrap Up'];
-$tipos = ['Texas Holdem','Texas Holdem','Omaha','Texas Holdem','Texas Holdem','Texas Holdem','Texas Holdem','Texas Holdem','Texas Holdem','Omaha'];
-$buyins = [50,100,30,250,80,200,60,0,500,150,40,120,70,90,300,25,175,55,35,45,65,85,110,130,220,15,180,95,75,140,160,20,10,5,1000,25,50,75,150,200,40,60,80,100,250,30,45,55,70,90];
-$gtds = ['50.000','100.000','20.000','1.000.000','75.000','500.000','40.000','5.000','2.000.000','150.000','30.000','200.000','60.000','80.000','350.000','15.000','120.000','45.000','25.000','35.000','55.000','70.000','90.000','110.000','180.000','10.000','140.000','85.000','65.000','250.000','130.000','12.000','8.000','4.000','3.000.000','20.000','40.000','60.000','250.000','100.000','35.000','50.000','70.000','90.000','200.000','25.000','38.000','42.000','55.000','2.500'];
-
+$cache_file = __DIR__ . '/data/torneios.json';
+$highlights  = [];
 $all_tournaments = [];
-for ($i = 0; $i < 50; $i++) {
-  $h = sprintf('%02d', rand(8, 23)) . ':' . sprintf('%02d', rand(0, 3) * 15);
-  $all_tournaments[] = [
-    'nome' => $tournament_names[$i],
-    'tipo' => $tipos[$i % count($tipos)],
-    'inicio' => $h,
-    'buyin' => $buyins[$i] == 0 ? 'Grátis' : 'R$ ' . number_format($buyins[$i], 0, ',', '.'),
-    'gtd' => 'R$ ' . $gtds[$i],
-    'stack' => number_format(($buyins[$i] ?: 50) * rand(80, 200), 0, ',', '.'),
-    'blinds' => '100/200',
-    'late' => rand(5, 60) . ' min'
-  ];
+
+$today = date('Y-m-d');
+
+if (file_exists($cache_file)) {
+    $cache = json_decode(file_get_contents($cache_file), true);
+    if ($cache && isset($cache['highlights'], $cache['tournaments'])) {
+        $highlights      = array_filter($cache['highlights'], fn($h) => ($h['date'] ?? '') === $today);
+        $all_tournaments = array_filter($cache['tournaments'], fn($t) => ($t['date'] ?? '') === $today);
+        $highlights      = array_values($highlights);
+        $all_tournaments = array_values($all_tournaments);
+    }
+}
+
+// Fallback to mock data if cache is empty or missing
+if (empty($highlights)) {
+    $highlights = [
+        ['title'=>'#AS OmaX HR','prize'=>'80K','game'=>'PLO5','time'=>'08:00 PM','buyin'=>'R$ 100','stack'=>'25.000','late'=>'30 min','blinds'=>'200/400'],
+        ['title'=>'#MS NLH Turbo','prize'=>'200K','game'=>'NLH','time'=>'09:00 PM','buyin'=>'R$ 250','stack'=>'50.000','late'=>'45 min','blinds'=>'500/1K'],
+        ['title'=>'#PKO Bounty','prize'=>'120K','game'=>'PKO','time'=>'10:00 PM','buyin'=>'R$ 80','stack'=>'15.000','late'=>'20 min','blinds'=>'150/300'],
+        ['title'=>'#Sun Milionario','prize'=>'500K','game'=>'NLH','time'=>'11:00 PM','buyin'=>'R$ 500','stack'=>'100.000','late'=>'60 min','blinds'=>'1K/2K'],
+        ['title'=>'#Omaha Hi-Lo','prize'=>'60K','game'=>'PLO','time'=>'12:00 AM','buyin'=>'R$ 60','stack'=>'12.000','late'=>'15 min','blinds'=>'120/240'],
+        ['title'=>'#Turbo KO','prize'=>'40K','game'=>'PKO','time'=>'01:00 AM','buyin'=>'R$ 40','stack'=>'8.000','late'=>'10 min','blinds'=>'80/160']
+    ];
+}
+
+if (empty($all_tournaments)) {
+    $tournament_names = ['Daily Millions','Deep Stack Turbo','Omaha Hi/Lo','Milionario GTD','Nightly KO','Sunday Special','PKO Bounty','Freeroll','High Roller','Speed Poker','Bounty Builder','Marathon','Turbo KO','Twilight Series','Saturday Special','Heads Up','6-Max Turbo','Deep Run','Progressive KO','Lucky 7s','The Warm Up','The Eliminator','Mega Stack','Mini Millions','Grand Prix','Last Chance','Early Bird','Night Owl','The Rebuy','The Freezeout','Big Stack','Short Deck','All-In or Fold','Zoom Poker','Hyper Turbo','Satellite','Double Chance','Triple Threat','Final Table','The Grind','Morning Session','Afternoon Delight','Late Night','Weekend Warrior','Monster Stack','King of the Hill','The Challenge','The Final','The Main Event','The Wrap Up'];
+    $tipos = ['Texas Holdem','Texas Holdem','Omaha','Texas Holdem','Texas Holdem','Texas Holdem','Texas Holdem','Texas Holdem','Texas Holdem','Omaha'];
+    $buyins = [50,100,30,250,80,200,60,0,500,150,40,120,70,90,300,25,175,55,35,45,65,85,110,130,220,15,180,95,75,140,160,20,10,5,1000,25,50,75,150,200,40,60,80,100,250,30,45,55,70,90];
+    $gtds = ['50.000','100.000','20.000','1.000.000','75.000','500.000','40.000','5.000','2.000.000','150.000','30.000','200.000','60.000','80.000','350.000','15.000','120.000','45.000','25.000','35.000','55.000','70.000','90.000','110.000','180.000','10.000','140.000','85.000','65.000','250.000','130.000','12.000','8.000','4.000','3.000.000','20.000','40.000','60.000','250.000','100.000','35.000','50.000','70.000','90.000','200.000','25.000','38.000','42.000','55.000','2.500'];
+
+    for ($i = 0; $i < 50; $i++) {
+        $h = sprintf('%02d', rand(8, 23)) . ':' . sprintf('%02d', rand(0, 3) * 15);
+        $all_tournaments[] = [
+            'nome'   => $tournament_names[$i],
+            'tipo'   => $tipos[$i % count($tipos)],
+            'inicio' => $h,
+            'buyin'  => $buyins[$i] == 0 ? 'Grátis' : 'R$ ' . number_format($buyins[$i], 0, ',', '.'),
+            'gtd'    => 'R$ ' . $gtds[$i],
+            'stack'  => number_format(($buyins[$i] ?: 50) * rand(80, 200), 0, ',', '.'),
+            'blinds' => '100/200',
+            'late'   => rand(5, 60) . ' min'
+        ];
+    }
 }
 
 get_header('blank');
@@ -73,6 +92,13 @@ get_header('blank');
 
 <section class="trn-section">
   <div class="trn-container">
+    <div class="trn-whatsapp">
+      <a href="https://api.whatsapp.com/send?phone=5511944601642" target="_blank" rel="noopener" class="trn-whatsapp__btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.199 2.095 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Quer jogar? Fale conosco no WhatsApp
+      </a>
+    </div>
+
     <div class="trn-filters">
       <div class="trn-filters__left">
         <label class="trn-filters__label" for="filter-buyin">Buy-in</label>
@@ -86,6 +112,7 @@ get_header('blank');
 
     <div class="trn-table-wrap">
       <table class="trn-table" id="tournaments-table">
+        <div style="text-align:center;color:#808080;font-size:13px;margin-bottom:16px;letter-spacing:.5px">Grade do dia &mdash; <?php echo date('d/m/Y'); ?></div>
         <thead><tr><th>Nome</th><th>Tipo</th><th>Início</th><th>Buy-in</th><th>GTD</th><th>Stack</th><th>Blinds</th><th>Late</th></tr></thead>
         <tbody>
           <?php foreach ($all_tournaments as $t): ?>
